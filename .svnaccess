@@ -1,0 +1,10 @@
+stschmid = rw
+mdoering = rw
+poettner = rw
+
+@mitarb = r
+* =
+
+[.svnaccess]
+@mitarb = rw
+* =  
