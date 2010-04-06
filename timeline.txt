@@ -63,5 +63,5 @@ Milestone 7: Ausarbeitung final (2010-06-22)
 
 [2 Wochen vor eigentlichen Termin um Luft für etwaige Probleme zu lassen]
 
-Offene Fragen:
-- Status Website beim IBR?
+TODO:
+- Related work finden und lesen
