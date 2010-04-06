@@ -3,12 +3,13 @@ Zeitplan: 2010-04-06 - 2010-07-06 (13 Wochen)
 
 Milestone 1: Board bring up (2010-04-13)
 ----------------------------------------
-- Überblick über iMote2
-- Eigenen Kernel bauen und booten
-- OE Support für iMote2
-- Rootfs und Kernel aus OE bauen
+X Überblick über iMote2
+X Initiales bootloader flashen über JTAG
+X Eigenen Kernel bauen und booten
+X OE Support für iMote2
+X Rootfs und Kernel aus OE bauen
 - OE rootfs und Kernel testen
-- Zugriff über Serielle Konsole
+X Zugriff über Serielle Konsole
 - Zugriff über USB-Ethernet SSH
 - Patches für etwaige Probleme an Upstream
 - Dokumentation board bring up
@@ -16,9 +17,9 @@ Milestone 1: Board bring up (2010-04-13)
 Milestone 2: CC2420 bring up (2010-04-20)
 -----------------------------------------
 - Einlesen in 802.15.4
-- iz-utils in OE
+X lowpan-tools in OE
 - CC2420 Treiber ans laufen bringen
-- Kommunikation über CC2420 und iz-utils
+- Kommunikation über CC2420 und lowpan-tools
 - Liste mit CC2420 Problemen
 - Dokumentation CC2420 bring up
 
@@ -32,7 +33,7 @@ Milestone 3: CC2420 fixen (2010-05-04)
 Milestone 4: IBR-DTN basics (2010-05-11)
 ----------------------------------------
 - Einlesen in IBR-DTN
-- OE Support für IBR-DTN
+X OE Support für IBR-DTN
 - IBR-DTN auf Hardware testen
 - Dokumentation IBR-DTN
 
@@ -62,12 +63,5 @@ Milestone 7: Ausarbeitung final (2010-06-22)
 
 [2 Wochen vor eigentlichen Termin um Luft für etwaige Probleme zu lassen]
 
-
 Offene Fragen:
-- Ausarbeitung in Englisch in Ordnung?
-- Seitenzahl der Ausarbeitung?
 - Status Website beim IBR?
-
-TODO:
-- TeX Vorlage vom IBR
-- GIT-SVN einrichten
