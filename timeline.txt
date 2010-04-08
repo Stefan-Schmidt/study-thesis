@@ -11,7 +11,7 @@ X Rootfs und Kernel aus OE bauen
 X OE rootfs und Kernel testen
 X Zugriff über Serielle Konsole
 X Zugriff über USB-Ethernet SSH
-- Patches für etwaige Probleme an Upstream
+X Patches für etwaige Probleme an Upstream
 - Dokumentation board bring up
 
 Milestone 2: CC2420 bring up (2010-04-20)
