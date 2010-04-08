@@ -23,3 +23,4 @@ paper:
 
 clean:
 	rm -f ${FILE}.{log,lof,lot,toc,aux,pdf,dvi,ps,out,nav,snm,bbl,blg}
+	rm -f chapters/*.aux
