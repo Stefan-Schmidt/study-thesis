@@ -16,10 +16,9 @@ X Patches für etwaige Probleme an Upstream
 
 Milestone 2: CC2420 bring up (2010-04-20)
 -----------------------------------------
-- Einlesen in 802.15.4
+X Einlesen in 802.15.4
 X lowpan-tools in OE
 X CC2420 Treiber ans laufen bringen
-- Kommunikation über CC2420 und lowpan-tools
 - Luftschnittstelle mit sniffer abhören
 - Liste mit CC2420 Problemen
 - Dokumentation CC2420 bring up
@@ -28,6 +27,7 @@ Milestone 3: CC2420 fixen (2010-05-04)
 --------------------------------------
 - Problemliste abarbeiten
 - Ziel: stabile Kommunikation
+- Kommunikation über CC2420 und lowpan-tools
 - Dokumentation CC2420 Verbesserungen
 [Etwas unklarer Zeitaufwand. Erst nach MS 2 abschätzbar]
 
