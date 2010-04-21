@@ -19,8 +19,8 @@ Milestone 2: CC2420 bring up (2010-04-20)
 X Einlesen in 802.15.4
 X lowpan-tools in OE
 X CC2420 Treiber ans laufen bringen
-- Luftschnittstelle mit sniffer abhören
-- Liste mit CC2420 Problemen
+X Luftschnittstelle mit sniffer abhören
+X Liste mit CC2420 Problemen
 - Dokumentation CC2420 bring up
 
 Milestone 3: CC2420 fixen (2010-05-04)
