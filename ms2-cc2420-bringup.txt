@@ -3,22 +3,17 @@ Problems:
 - Driver hangs with -EBUSY if fifop (gpio 0) is gpio_request()'ed
 - iza assoc hangs
   - Wrong CRC
-  - Wrong address
+  - Wrong address (Leave ADDREDECODE enabled)
+  - Wrong PAN
 - IEEE802154 ed function not implemented (not needed?)
 - Stack: No security support
 - Stack: No AACK support
 - Stack: Problems with GTS parsing
-[- Read out lot codes?]
 [- No suspend and resume support]
 [- Cleanup needed]
 [- Kernel panic with cdc_subset (Workaround)]
 
-1) Try to assoc your wpan-phy with a coordinator running on the same phy.
-You will notice that it doesn't work.
-(which is probably the root cause of the problem you have reported in one of
-your earlier mailing list posts).
-
-2) Missing return value handling of xmit().
+Missing return value handling of xmit().
 There should be at least something like this:
 RETVAL:
 XMIT_SUCCESS
@@ -27,7 +22,6 @@ XMIT_FAILURE_CSMACA
 XMIT_FAILURE_NOACK
 
 And upper layer should respond with appropriate actions.
-
 
 Tests (faklb):
 --------------
@@ -48,7 +42,5 @@ Fixed:
 - Segfaults in tests
 - ioctl oops with missing device
 
--------------------------------------------------------------------------------
 izchat 777 8002 8001
-
 izchat 777 8001 8002
