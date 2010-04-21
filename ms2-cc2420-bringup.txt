@@ -1,0 +1,54 @@
+Problems:
+---------
+- Driver hangs with -EBUSY if fifop (gpio 0) is gpio_request()'ed
+- iza assoc hangs
+  - Wrong CRC
+  - Wrong address
+- IEEE802154 ed function not implemented (not needed?)
+- Stack: No security support
+- Stack: No AACK support
+- Stack: Problems with GTS parsing
+[- Read out lot codes?]
+[- No suspend and resume support]
+[- Cleanup needed]
+[- Kernel panic with cdc_subset (Workaround)]
+
+1) Try to assoc your wpan-phy with a coordinator running on the same phy.
+You will notice that it doesn't work.
+(which is probably the root cause of the problem you have reported in one of
+your earlier mailing list posts).
+
+2) Missing return value handling of xmit().
+There should be at least something like this:
+RETVAL:
+XMIT_SUCCESS
+XMIT_SUCCESS_DATPEND
+XMIT_FAILURE_CSMACA
+XMIT_FAILURE_NOACK
+
+And upper layer should respond with appropriate actions.
+
+
+Tests (faklb):
+--------------
+- gnl WORKS
+- test - test4 and test7 hangs
+- test5 and test6
+ioctl: SIOCGIFADDR: Cannot assign requested address
+
+root@imote2:/usr/libexec/lowpan-tools# ./izlisten wpan0
+bind: No such device
+^C
+root@imote2:/usr/libexec/lowpan-tools# ./listen-packet #Works with address set and network up
+recv: Network is down
+shutdown: Operation not supported
+
+Fixed:
+------
+- Segfaults in tests
+- ioctl oops with missing device
+
+-------------------------------------------------------------------------------
+izchat 777 8002 8001
+
+izchat 777 8001 8002
