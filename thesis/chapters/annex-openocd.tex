@@ -1,0 +1,18 @@
+Use OpenOCD to do the initial blob install:
+
+The iMotes are shipped with something like TinyOS by default. I wasn't able to
+find a bootloader on it so the only way to get it bootstrapped was to use the
+JTAG interface.
+
+\begin{verbatim}
+Get OpenOCD (v0.4.0) and libftdi (v0.17)
+Download the pre-compiled blob from: http://sourceforge.net/projects/imote2-linux/files/
+(As root or with fixed US permissions) sudo openocd -f /usr/share/openocd/scripts/interface/jtagkey.cfg -f /usr/share/openocd/scripts/board/crossbow_tech_imote2.cfg
+On another console: telnet localhost 4444
+# reset halt
+# flash protect 0 0 last off
+# flash erase_sector 0 0 258
+# flash write_image blob-im2
+# flash write_image 2.6.34-rc2-zImage 0x00040000 bin
+# flash write_image console-image-imote2.jffs2 0x00240000 bin
+\end{verbatim}
