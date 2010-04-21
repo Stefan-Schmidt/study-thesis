@@ -5,6 +5,7 @@ Problems:
   - Wrong CRC
   - Wrong address (Leave ADDREDECODE enabled)
   - Wrong PAN
+  - SRC address splitted in SRC and DST address
 - IEEE802154 ed function not implemented (not needed?)
 - Stack: No security support
 - Stack: No AACK support
