@@ -1,15 +1,11 @@
 Problems:
 ---------
 - Driver hangs with -EBUSY if fifop (gpio 0) is gpio_request()'ed
-- iza assoc hangs
-  - Wrong CRC
-  - Wrong address (Leave ADDREDECODE enabled)
-  - Wrong PAN
-  - SRC address splitted in SRC and DST address
 - IEEE802154 ed function not implemented (not needed?)
 - Stack: No security support
 - Stack: No AACK support
 - Stack: Problems with GTS parsing
+- cc2420: Hardware address decoding must be off
 [- No suspend and resume support]
 [- Cleanup needed]
 [- Kernel panic with cdc_subset (Workaround)]
@@ -42,6 +38,6 @@ Fixed:
 ------
 - Segfaults in tests
 - ioctl oops with missing device
-
-izchat 777 8002 8001
-izchat 777 8001 8002
+- Len as first byte in TXFIFO
+- Add FCS to len byte
+- Cut off corr and rssi
