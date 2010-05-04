@@ -25,11 +25,10 @@ X Liste mit CC2420 Problemen
 
 Milestone 3: CC2420 fixen (2010-05-04)
 --------------------------------------
-- Problemliste abarbeiten
-- Ziel: stabile Kommunikation
-- Kommunikation über CC2420 und lowpan-tools
+X Problemliste abarbeiten
+X Ziel: stabile Kommunikation
+X Kommunikation über CC2420 und lowpan-tools
 - Dokumentation CC2420 Verbesserungen
-[Etwas unklarer Zeitaufwand. Erst nach MS 2 abschätzbar]
 
 Milestone 4: IBR-DTN basics (2010-05-11)
 ----------------------------------------
@@ -50,6 +49,7 @@ Milestone 5: IBR-DTN convergence layer (2010-06-08)
 
 Milestone 6: Ausarbeitung Phase 1 (2010-06-15)
 ----------------------------------------------
+- Related work finden und lesen
 - Zusammenfassen aller einzelnen Dokumentationen
 - Einführung schreiben
 - Graphiken erstellen
@@ -67,6 +67,3 @@ Milestone 7: Ausarbeitung final (2010-06-22)
 Misc:
 -----
 - Sensorboard testen
-
-TODO:
-- Related work finden und lesen
