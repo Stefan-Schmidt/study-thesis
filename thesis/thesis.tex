@@ -84,8 +84,36 @@ This example abstract is indeed very abstract.
 
 \cleardoublepage
 
-\vspace*{7cm}
-\centerline{[Hier wird später die Aufgabenstellung eingefügt.]}
+\centerline{\bf Aufgabenstellung}
+Ziel dieser Arbeit ist es, eine lauffähige Version der IBR DTN Implementierung
+für die iMote 2 Hardwareplattform zu erstellen, welche die Funkschnittstelle
+CC2420 zum Bündelaustausch mit anderen iMote 2 Knoten verwendet.
+
+Im Rahmen dieser Arbeit ist deshalb zunächst ein Überblick über den
+zugrundeliegenden Standard IEEE 802.15.4 zu geben. Weiterhin ist ein Überblick
+über verwandte Arbeiten zum Thema Delay Tolerant Networking auf IEEE 802.15.4
+basierter Hardware zu erarbeiten.
+
+Anschließend muss eine Entwicklungsumgebung auf Basis von OpenEmbedded
+aufgesetzt werden, um schließlich IBR DTN für die Zielplattform übersetzen zu
+können. Weiterhin muss ein geeigneter Treiber für den Chipcon CC2420 entwickelt
+sowie eine passende Schnittstelle spezifiziert und entwickelt werden. Sollte
+sich einer der existierenden Treiber als nutzbringend erweisen, so kann dieser
+entsprechend den Anforderungen angepasst werden. Im letzten Schritt muss nun
+eine Anpassungsschicht (Convergence Layer) implementiert werden, mit deren Hilfe
+IBR DTN die Funkschnittstelle zum Datenaustausch zwischen Knoten nutzen kann.
+Dieser Convergence Layer soll dabei mindestens den Bündelaustausch zwischen
+zwei Knoten sowie die Erkennung von Knoten in der Umgebung ermöglichen.
+
+Die neue Implementierung sowie die Leistungsfähigkeit der Kombination aus
+iMote 2, Linux, CC2420 und IBR DTN ist zu evaluieren. Dabei soll insbesondere
+der erzielbare Durchsatz sowie der protokollbedingte Overhead ermittelt werden.
+Engpässe in der Leistungsfähigkeit sollen nach Möglichkeit der verantwortlichen
+Komponente zugeordnet werden, um Ansatzpunkte für zukünftige Optimierungen
+aufzuzeigen. Die entwickelte Software ist weiterhin auf korrekte Funktion zu
+testen. Die Testfälle sollten mindestens das Auffinden von anderen Knoten, den
+Datenaustausch zwischen Knoten, die Erneutübertragung verloren gegangener Frames
+sowie die Fragmentierung und Wiederherstellung von Bündeln abdecken.
 
 \tableofcontents
 \cleardoublepage
