@@ -1,14 +1,38 @@
 Use OpenOCD to do the initial blob install:
 
-The iMotes are shipped with something like TinyOS by default. I wasn't able to
-find a bootloader on it so the only way to get it bootstrapped was to use the
-JTAG interface.
+The iMotes are shipped with TinyOS by default. There is now bootloader installed
+that would allow you to flash another OS so the only way to get it bootstrapped
+was to use the JTAG interface.
+
+We used OpenOCD for this task. Make sure you have at least OpenOCD version 0.4.0
+and libftdi version 0.17 installed.
+
+The OS e are going to install consists of the major parts. The bootloader blob, the
+Linux kernel and a root file system with the userland software components. While
+we are preparing the kernel and the root filesystem ourselfs we use a
+precompiled version of the blob bootloader from:
+http://sourceforge.net/projects/imote2-linux/files/
+
+The used JTAG adapter is a JTAGkey Tiny from Amontec. OpenOCD already offers
+configurations for the JTAG adapter as well as the iMOte2 board. Starting
+OpenOCD as following uses the right configuration files:
+
+sudo openocd -f /usr/share/openocd/scripts/interface/jtagkey.cfg -f \\
+/usr/share/openocd/scripts/board/crossbow\_tech\_imote2.cfg
+
+Now you ca connect to the OpenOCD telnet interface on port 4444 with:
 
 \begin{verbatim}
-Get OpenOCD (v0.4.0) and libftdi (v0.17)
-Download the pre-compiled blob from: http://sourceforge.net/projects/imote2-linux/files/
-(As root or with fixed US permissions) sudo openocd -f /usr/share/openocd/scripts/interface/jtagkey.cfg -f /usr/share/openocd/scripts/board/crossbow_tech_imote2.cfg
-On another console: telnet localhost 4444
+telnet localhost 4444
+\end{verbatim}
+
+First we need to make sure that the iMote2 is halted. In this state we are at PC
+0 and no code got exectued so far. Afterwards disbale the flash protection and
+erase the complete flash. The last three steps are writing the bootloader, the
+linux kernel and the rootfs at the given offsets into the flash. The last step
+will take a long time as it writes 30 Mbyte into the flash.
+
+\begin{verbatim}
 # reset halt
 # flash protect 0 0 last off
 # flash erase_sector 0 0 258
