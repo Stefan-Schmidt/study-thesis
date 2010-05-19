@@ -32,7 +32,7 @@ X Kommunikation über CC2420 und lowpan-tools
 
 Milestone 4: IBR-DTN basics (2010-05-11)
 ----------------------------------------
-- Einlesen in IBR-DTN
+X Einlesen in IBR-DTN
 X OE Support für IBR-DTN
 - IBR-DTN auf Hardware testen
 - Dokumentation IBR-DTN
@@ -63,7 +63,3 @@ Milestone 7: Ausarbeitung final (2010-06-22)
 - Drucken
 
 [2 Wochen vor eigentlichen Termin um Luft für etwaige Probleme zu lassen]
-
-Misc:
------
-- Sensorboard testen
