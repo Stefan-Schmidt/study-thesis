@@ -34,7 +34,7 @@ Milestone 4: IBR-DTN basics (2010-05-11)
 ----------------------------------------
 X Einlesen in IBR-DTN
 X OE Support für IBR-DTN
-- IBR-DTN auf Hardware testen
+X IBR-DTN auf Hardware testen
 - Dokumentation IBR-DTN
 
 Milestone 5: IBR-DTN convergence layer (2010-06-08)
