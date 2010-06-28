@@ -1,2 +1,34 @@
 \chapter{Introduction}
 \cite{RFC5050}
+
+\section{IEEE 802.15.4}
+
+Driven by an IEEE working group the 802.15.4 standard provides the physical and
+mac access control layer for so called low-rate wireless personal area network
+(LR-WPAN). The emphasis is on low cost devices for communication without
+infrastructure in a nearby environment. The communication range would be up to
+10m and offers nowadays a transfer rate up to 250 kbit/s. The standard specifies
+three possible frequency bands to operate in. The usage of some may be
+restricted in different countries but one band is available worldwide. Other
+features of 802.15.4 includes collision avoidance through CSMA/CA, build in
+support for secure communication through cryptography, power management through
+link quality control and energy detection as well as reserved time slots for
+real-time operations.
+
+As already covered the standard does only cover the two lowest layer of a
+protocol stack. Supplement it to a fully functional networking stack is the aim
+of different other specifications. The most famous would be ZigBee. With 6LowPAN
+there is also work underway to link LR-WPAN together with standard internet
+protocols like IPv6.
+
+Specified for an infrastructure-less network the topologies may be star or
+Peer-to-Peer based as well a composition of both. Two different device types are
+allowed. full-function device (FFD) and reduced-function device (RFD). The RFD
+is a really simple device which can only connect to one FFD at a time. Therefor
+it can only act as a leaf in all described topologies. In contrast the FFD is
+able to act as a coordinator to span up a whole PAN and rely messages to other
+nodes. At least one coordinator is needed in every network. One thing to keep in
+mind is that routing is not covered by the standard. To rely messages over
+different hops the supplement upper layers need to take care of this.
+
+\section{DTN}
