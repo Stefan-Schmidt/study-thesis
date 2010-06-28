@@ -1,11 +1,4 @@
-chapters/01-introduction.aux
-chapters/02-imote2-hardware.aux
-chapters/03-ibr-dtn-implementation.aux
-chapters/04-802154-convergence-layer.aux
-chapters/05-evaluation.aux
-chapters/06-conclusion.aux
-chapters/annex-openembedded.aux
-chapters/annex-openocd.aux
+chapters/*.aux
 thesis.aux
 thesis.bbl
 thesis.blg
