@@ -1,5 +1,4 @@
 \chapter{Introduction}
-\cite{RFC5050}
 
 \section{IEEE 802.15.4}
 
@@ -32,3 +31,25 @@ mind is that routing is not covered by the standard. To rely messages over
 different hops the supplement upper layers need to take care of this.
 
 \section{DTN}
+
+Delay-tolerant networking is the other core technology that is used within this
+thesis. The need for communication between nodes without continuous network
+connectivity is what DTN seeks to address. Most modern routing protocols only
+send out the real data once a complete route to the destination is established.
+A communication over such an approach is only possible if source and destination
+are long enough within a connected network to establish a route between them,
+transfer the data and maybe acknowledge the transfer.
+
+DTN in contrast uses a store and forward approach which sends out the data
+directly together with the destination address. The bundle protocol in
+\cite{RFC5050} was specified for this. One approach to maximize the propability
+of a successfull delivered message would be to send out multiple copies of the
+same message, maybe to different hops. Such an approach obviously increases the
+network and storage load and may not be usefull for constrained devices like
+sensor nodes.
+
+The bundle protocol specifies an overlay network which interacts with the lower
+layers over bundle convergence layers. The lower layers are not bound to be IP
+based even if that is the one widely used. In this thesis we describe the usage
+of the DTN implementation IBR-DTN over a 802.15.4 radio link on a linux based
+system.
