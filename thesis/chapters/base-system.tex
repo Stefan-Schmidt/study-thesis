@@ -1,5 +1,21 @@
 \chapter{Base System}
+This chapter describes the basic software system we are using on the Imote2
+platform. Ranging from the bootloader throught the Linux kernel up to the
+userland software stack. Our DTN implementation, IBR-DTN, is excluded here as we
+describe them in detail in a separate chapter.
+
 \section{Bootstraping}
+The Imote2 comes with TinyOS pre-installed. No bootloader or similar mechanism
+is installed to allow reflashing of the device. As a last resort there is JTAG
+available on the interface board and we used it together with OpenOCD and an
+JTAGKeyTiny to bootstrap our linux system. Blob was used as bootloader to load
+the kernel image from flash and give the right parameter to boot into the
+userland root file system. Detailed steps can be found in the annex.
+
 \section{Linux Kernel}
+A recent Linux kernel (2.6.33) is used on the device. The basic support for the
+PXA271 and the Imote2 board was already available in this kernel.
+
 \section{CC2420 Driver and ieee802154 stack}
+
 \section{OpenEmbedded base system}
