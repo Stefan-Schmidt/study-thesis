@@ -12,7 +12,7 @@ X OE rootfs und Kernel testen
 X Zugriff über Serielle Konsole
 X Zugriff über USB-Ethernet SSH
 X Patches für etwaige Probleme an Upstream
-- Dokumentation board bring up
+X Dokumentation board bring up
 
 Milestone 2: CC2420 bring up (2010-04-20)
 -----------------------------------------
@@ -21,7 +21,7 @@ X lowpan-tools in OE
 X CC2420 Treiber ans laufen bringen
 X Luftschnittstelle mit sniffer abhören
 X Liste mit CC2420 Problemen
-- Dokumentation CC2420 bring up
+X Dokumentation CC2420 bring up
 
 Milestone 3: CC2420 fixen (2010-05-04)
 --------------------------------------
