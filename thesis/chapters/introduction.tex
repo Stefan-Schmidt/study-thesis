@@ -40,9 +40,9 @@ real-time operations.
 
 As already covered the standard does only cover the two lowest layer of a
 protocol stack. Supplement it to a fully functional networking stack is the aim
-of different other specifications. The most famous would be ZigBee. With 6LowPAN
-there is also work underway to link LR-WPAN together with standard internet
-protocols like IPv6.
+of different other specifications as shown in figure~\ref{fig:802154layer}. The
+most famous would be ZigBee. With 6LowPAN there is also work underway to link
+LR-WPAN together with standard internet protocols like IPv6.
 
 Specified for an infrastructure-less network the topologies may be star or
 Peer-to-Peer based as well a composition of both. Two different device types are
@@ -53,6 +53,14 @@ able to act as a coordinator to span up a whole PAN and rely messages to other
 nodes. At least one coordinator is needed in every network. One thing to keep in
 mind is that routing is not covered by the standard. To rely messages over
 different hops the supplement upper layers need to take care of this.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[height=6cm]{images/802154layer}
+    \caption{802.15.4 lower layers with optional upper layers}
+        \label{fig:802154layer}
+  \end{center}
+\end{figure}
 
 \section{DTN}
 \label{introdtn}
