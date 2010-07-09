@@ -1,0 +1,44 @@
+Network performance:
+--------------------
+802.15.4 Throughput:
+Time for a 10 x 1 KByte transmission
+Time for a 10 KByte transmission
+Time for a 10 x 1 MByte transmission
+Time for a 10 MByte transmission
+
+DTN Throughput:
+Time for a 10 x 1 KByte transmission
+Time for a 10 KByte transmission
+Time for a 10 x 1 MByte transmission
+Time for a 10 MByte transmission
+
+Disconnection:
+Can an interrupt be handled? Turning of the receiving/transmitting device and turn
+it on again. FXIME: This needs more thinking
+
+Setup:
+The measured node is connected over serial to the host with the connector board.
+Distance between the nodes is 1m.
+
+Battery performance:
+--------------------
+Imote2 used with the battery pack (3 x 1,5V AAA). Different loads for the
+runtime measurement:
+- IDLE:			radio off, limited OS activity
+- TRANSMIT-SECOND:	radio on, transmit every second
+- TRANSMIT-MINUTE:	radio on, transmit every minute
+- TRANSMIT-HOUR:	radio on, transmit every hour
+- RECEIVE-SECOND:	radio on, receive every second
+- RECEIVE-MINUTE:	radio on, receive every minute
+- RECEIVE-HOUR:		radio on, receive every hour
+
+Setup:
+The measured node is connected over serial to the host with the connector board
+in no power mode. That way no power is supplied via USB from the host to the
+board and only the battery power is used. The corresponding node is also
+connected to the host but powered over USB. Distance between the nodes is 1m.
+
+No way is provided to ask the hardware for the charge status of the battery so
+the only way is to measure until the device turns off due to missing power.
+Until this happens a line with the current load and time is added to a log file.
+
