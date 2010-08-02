@@ -28,7 +28,7 @@ Milestone 3: CC2420 fixen (2010-05-04)
 X Problemliste abarbeiten
 X Ziel: stabile Kommunikation
 X Kommunikation über CC2420 und lowpan-tools
-- Dokumentation CC2420 Verbesserungen
+X Dokumentation CC2420 Verbesserungen
 
 Milestone 4: IBR-DTN basics (2010-05-11)
 ----------------------------------------
@@ -39,19 +39,17 @@ X IBR-DTN auf Hardware testen
 
 Milestone 5: IBR-DTN convergence layer (2010-06-08)
 ---------------------------------------------------
-- 802.15.4 Convergence layer für ibrdtn schreiben
+X 802.15.4 Convergence layer für ibrdtn schreiben
 - Durchsatz testen
 - Testwerkzeug bauen
-- Tests für alle Optimierungen
-- Fragmentierung testen
-- Dokumentation Implementierung, Optimierung und Fragmentierung
+- Dokumentation Implementierung
 - Einzelne Dokumentationsblöcke zur Review geben
 
 Milestone 6: Ausarbeitung Phase 1 (2010-06-15)
 ----------------------------------------------
-- Related work finden und lesen
+X Related work finden und lesen
 - Zusammenfassen aller einzelnen Dokumentationen
-- Einführung schreiben
+X Einführung schreiben
 - Graphiken erstellen
 - Fazit
 - Review Runde
