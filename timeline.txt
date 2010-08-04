@@ -35,15 +35,14 @@ Milestone 4: IBR-DTN basics (2010-05-11)
 X Einlesen in IBR-DTN
 X OE Support für IBR-DTN
 X IBR-DTN auf Hardware testen
-- Dokumentation IBR-DTN
+X Dokumentation IBR-DTN
 
 Milestone 5: IBR-DTN convergence layer (2010-06-08)
 ---------------------------------------------------
 X 802.15.4 Convergence layer für ibrdtn schreiben
 - Durchsatz testen
-- Testwerkzeug bauen
-- Dokumentation Implementierung
-- Einzelne Dokumentationsblöcke zur Review geben
+X Testwerkzeug bauen
+X Dokumentation Implementierung
 
 Milestone 6: Ausarbeitung Phase 1 (2010-06-15)
 ----------------------------------------------
