@@ -11,7 +11,7 @@ consumption cost compared to microcontroller based sensor nodes like the T-Mote
 Sky. On the other hand exactly these components are allowing us to run a full
 Linux and DTN system on the node and allow comfortable development.
 
-\section{Processor Radio board}
+\section{Processor Radio Board}
 As the name suggests this is the base board all other boards rely on. It holds
 the PXA271 XScale ARM System on a Chip with a cpu frequency from 13 to 416 MHz
 as well as the 32 MB SDRAM and the 32 MB flash storage. If configured for a
@@ -28,6 +28,14 @@ power over USB.
 
 The only other component that is directly build onto this board is the 802.15.4
 radio plus antenna. We go into more details about it in the next section.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[height=6cm]{images/imote_top_cutted}
+    \caption{Top side of the Processor Radio Board with the CC2420 and its antenna}
+        \label{fig:imote2top}
+  \end{center}
+\end{figure}
 
 \section{CC2420 802.15.4 Transceiver}
 The used 802.15.4 radio on the Imote2 is a CC2420 from ChipCon nowadays TI.
