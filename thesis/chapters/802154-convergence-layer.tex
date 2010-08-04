@@ -51,6 +51,16 @@ associating node a short address. With this basic configuration, which can
 somewhat be compared to a DHCP server and client, we start dtnd and are ready to
 transmit and receive bundles.
 
+\section{Configuration}
+
+To make IBR-DTN work correctly with our 802.15.4 hardware we need to configure
+it and teach it about the interface name it has to use as well as that we are
+looking for a lowpan connection. Lowpan is just the internal name for the
+802.15.4 convergence layer inside IBR-DTN. The PAN ID needs to be filled into the
+port configuration option. Filled in values need to be in decimal notation.
+
+The static routes to other nodes need also be configured.
+
 \section{Addressing}
 
 The specification for Low-Rate Wireless Personal Area Networks specifies to
