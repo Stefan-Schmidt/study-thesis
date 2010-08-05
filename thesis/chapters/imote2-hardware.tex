@@ -27,7 +27,7 @@ connector on the board. This can be used to access the system and supply power
 over USB.
 
 Figure \ref{fig:imote2top} is a top view of the IPR2400 showing the USB client plug,
-the board connectors and the 802.15.4 radio transceiver with the on board
+the board connectors and the IEEE 802.15.4 radio transceiver with the onboard
 antenna. We go into more details about it in the next section.
 
 \begin{figure}
@@ -38,11 +38,11 @@ antenna. We go into more details about it in the next section.
   \end{center}
 \end{figure}
 
-\section{CC2420 802.15.4 Transceiver}
-The used 802.15.4 radio on the Imote2 is a CC2420 from ChipCon nowadays TI.
+\section{CC2420 IEEE 802.15.4 Transceiver}
+The used IEEE 802.15.4 radio on the Imote2 is a CC2420 from ChipCon nowadays TI.
 Configuration and data transfer is done over SPI while some extra signalling
 GPIOs are used for interrupts. FIFOs for transmit as well as receive with a size
-of 128 Byte, the maximal transfer unit in 802.15.4, are available. Interrupts
+of 128 Byte, the maximal transfer unit in IEEE 802.15.4, are available. Interrupts
 are generated once a start frame delimiter (SFD) was recognized, a full package
 arrived in the FIFO or when a FIFO is going to reach a specified threshold.
 
@@ -50,7 +50,7 @@ The CC2420 is a full-function device (FFD) and as such can be used as
 coordinator or normal node. It only uses the 2.4 GHz band out of the three
 available bands. It supports all sixteen channels on this band. Channel 11
 (2.405 GHz) to 26 (2.480 GHz). It also supports the highest data rate available
-in 802.15.4 with 250 kbps. Configuration modes for the radio transmission power
+in IEEE 802.15.4 with 250 kbps. Configuration modes for the radio transmission power
 are available to either save power or extend range.
 
 More hardware support is available for CRC checking, data encryption, clear
@@ -61,8 +61,8 @@ interrupt lines into a system and the software support to drive the chip can be
 stripped down to a minimum if needed.
 
 The only downer is the lack of support for all frequency bands. The 2.4GHz
-industrial, scientific and medical (ISM) band is already used crowded with WiFi
+industrial, scientific and medical (ISM) band is already crowded with WiFi
 communication, baby monitors, home video streaming solutions and many other
 technologies. Having a chip that would be able to use the other radio bands
 would have opened the possibility to switch to a less crowded band and evaluate
-the performance on contrast to the 2.4GHz band.
+the performance in contrast to the 2.4GHz band.

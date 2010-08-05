@@ -31,18 +31,18 @@ We decided to go with the later one to have something that could go into the
 mainline kernel and therefor provide us with an easier long term use and
 maintenance.
 
-Like the 802.15.4 protocol the Linux stack is divided into two layers. The
+Like the IEEE 802.15.4 protocol the Linux stack is divided into two layers. The
 physical layer which is called ieee802154 and the mac layer which is called
 mac80154. While the former is already merged into the mainline kernel the later
 one is still being developed and lives inside the kernel repository of the
 linux-zigbee project. This repository follows the mainline kernel very closely
-and based out work on it to submit fixes and enhancements directly to the driver
+and we based our work on it to submit fixes and enhancements directly to the driver
 maintainer.
 
 During initial research a cc2420 driver based on the new Linux stack showed up
 and was submitted right in time for our research. Some debugging and bug fixing
 had to be applied to this driver before it was fully functional. The CC2420 has
-a lot hardware support for the different 802.15.4 related tasks that includes
+a lot hardware support for the different IEEE 802.15.4 related tasks that includes
 some some header preparation in hardware. That way it is not needed to
 completely assemble or disassemble a packet in the driver and the stack. While
 some parts are static enough to be set depending on some configuration registers

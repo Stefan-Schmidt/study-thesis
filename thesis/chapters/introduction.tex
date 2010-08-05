@@ -3,17 +3,17 @@ While approaching a more and more ubiquitous network experience where we are
 connected to different personal area networks (PAN) or even the global internet
 around the clock two problems become more important. One problem is the power
 consumptions of devices that makes the ubiquity possible. In contrast to other
-computing device we want them to be well hidden and don't disturb us. Changing
+computing devices we want them to be well hidden and do not disturb us. Changing
 batteries or having power cables around is not a real option for them. On the
 other hand wireless communication protocols with 802.11 \cite{ieee80211} as the
 leading option are a good choice for mobile devices like notebooks or
-smartphones but are still to power consuming for such small ubiquitous devices.
-With 802.15.4 \cite{ieee802154} a new protocol was designed for exactly such
+smartphones but are still to power consuming for small ubiquitous devices.
+With IEEE 802.15.4 \cite{ieee802154} a new protocol was designed for exactly such
 small, power constraint devices. We will use it in our research and have some
 more informations about it prepared in~\ref{intro802154}.
 
 The second problem is disrupted network connection be it due to movement or
-similar. The most widely used protocol family with IP, UDP, TCP and more is not
+similar. The most widely used protocol family with IP, UDP, TCP is not
 designed for disrupted networks. They expect a working physical connection below
 them to work as expected. If this is not the case the packets may be just lost
 as in case of UDP or have to be re-transmitted. This re-transmission could be
@@ -26,14 +26,14 @@ in~\ref{802154layer}.
 
 \section{IEEE 802.15.4}
 \label{intro802154}
-Driven by an IEEE working group the 802.15.4 standard provides the physical and
+Driven by an IEEE working group the IEEE 802.15.4 standard provides the physical and
 mac access control layer for so called low-rate wireless personal area network
 (LR-WPAN). The emphasis is on low cost devices for communication without
 infrastructure in a nearby environment. The communication range would be up to
 10m and offers nowadays a transfer rate up to 250 kbit/s. The standard specifies
 three possible frequency bands to operate in. The usage of some may be
 restricted in different countries but one band is available worldwide. Other
-features of 802.15.4 includes collision avoidance through CSMA/CA, build in
+features of IEEE 802.15.4 includes collision avoidance through CSMA/CA, build in
 support for secure communication through cryptography, power management through
 link quality control and energy detection as well as reserved time slots for
 real-time operations.
@@ -93,5 +93,5 @@ sensor nodes.
 The bundle protocol specifies an overlay network which interacts with the lower
 layers over bundle convergence layers. The lower layers are not bound to be IP
 based even if that is the one widely used. In this thesis we describe the usage
-of the DTN implementation IBR-DTN over a 802.15.4 radio link on a linux based
-system.
+of the DTN implementation IBR-DTN over an IEEE 802.15.4 radio link on a Linux
+based system.

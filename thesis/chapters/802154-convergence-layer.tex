@@ -1,9 +1,9 @@
-\chapter{802.15.4 Convergence layer}
+\chapter{IEEE 802.15.4 Convergence layer}
 \label{802154layer}
-\section{Interface with the linux ieee802154 Stack}
+\section{Interface with the Linux ieee802154 Stack}
 
-The communication between the 802.15.4 convergence layer of IBR-DTN and the
-linux ieee802154 stack is done over to separate channels. One is used for
+The communication between the IEEE 802.15.4 convergence layer of IBR-DTN and the
+Linux ieee802154 stack is done over two separate channels. One is used for
 signalling and configuration and is handled over the kernel netlink mechanism.
 The second is used for the actual data transport and is exposed as standard
 socket interface. The listing below shows the usage of the socket interface. As
@@ -53,10 +53,10 @@ transmit and receive bundles.
 
 \section{Configuration}
 
-To make IBR-DTN work correctly with our 802.15.4 hardware we need to configure
+To make IBR-DTN work correctly with our IEEE 802.15.4 hardware we need to configure
 it and teach it about the interface name it has to use as well as that we are
 looking for a lowpan connection. Lowpan is just the internal name for the
-802.15.4 convergence layer inside IBR-DTN. The PAN ID needs to be filled into the
+IEEE 802.15.4 convergence layer inside IBR-DTN. The PAN ID needs to be filled into the
 port configuration option. Filled in values need to be in decimal notation.
 
 The static routes to other nodes need also be configured.
@@ -70,14 +70,14 @@ on the PAN. The short address is supplied by the PAN coordinator.
 
 \section{Fragmentation}
 
-The maximal packet size in 802.15.4 is about 127 byte. Deducting the header
+The maximal packet size in IEEE 802.15.4 is about 127 byte. Deducting the header
 and other needed data we can transport about 115 byte of actual payload in a
 packet. So far IBR-DTN was build around the IP/TCP/UDP family which normally has
 a maximal transfer size of 1500 byte.
 
 The header size of the bundle protocol is not fixed but variable depending on
 the transported data and enabled options. It is as well possible that the header
-size is greater then the 115 byte payload we could offer with 802.15.4. The
+size is greater then the 115 byte payload we could offer with IEEE 802.15.4. The
 draft FIXME:CITE for a TCP convergence layer protocol could help here as it
 defines a data transmission divided into several segments. Even the bundle
 header could be split into several segments this way and build together on the
