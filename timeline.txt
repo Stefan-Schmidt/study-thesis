@@ -40,7 +40,7 @@ X Dokumentation IBR-DTN
 Milestone 5: IBR-DTN convergence layer (2010-06-08)
 ---------------------------------------------------
 X 802.15.4 Convergence layer für ibrdtn schreiben
-- Durchsatz testen
+X Durchsatz testen
 X Testwerkzeug bauen
 X Dokumentation Implementierung
 
