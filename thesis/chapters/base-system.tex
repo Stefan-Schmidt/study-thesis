@@ -16,7 +16,7 @@ userland root file system. Detailed steps can be found in the annex.
 A recent Linux kernel (2.6.33) is used on the device. The basic support for the
 PXA271 and the Imote2 board was already available in this kernel. The support
 included the usage of the on board flash chip for storage as well as the usb
-client to act as a usb ethernet device showing up at th development host. More
+client to act as a USB ethernet device showing up at th development host. More
 work was needed to go into the driver for the radio transceiver.
 
 \section{CC2420 Driver and ieee802154 stack}
@@ -36,21 +36,21 @@ and was submitted right in time for our research. Some debugging and bug fixing
 had to be applied to this driver before it was fully functional. The CC2420 has
 a lot hardware support for the different 802.15.4 related tasks that includes
 some some header preparation in hardware. That way it is not needed to
-completely assemble or disassamble a packet in the driver and the stack. While
-some parts are static enough to be set depending on soem configuration registers
+completely assemble or disassemble a packet in the driver and the stack. While
+some parts are static enough to be set depending on some configuration registers
 the length of a to be send packet data unit (PDU) needs to be set from the driver
 as it is the only place that knows about the upcoming data length. Due to this
 the first byte that have to enter the data FIFO of the CC2420 has to be the
-length byte of the PDU. The initial driver missed that and this reulted in
+length byte of the PDU. The initial driver missed that and this resulted in
 strange packet length and broken packet headers as the first byte of the header
 was interpreted as the length byte. With this problem out of the way sending
 packets worked like it should.
 
 ON the receiving side another subtle problem had to be found and eliminated
-before the driver could be fully used. Another hardware accelarated task is the
+before the driver could be fully used. Another hardware accelerated task is the
 CRC checking of an incoming packet. The 16bit CRC sits in the last two bytes of
-an arrived packet. If enabled the hardware now checks for the corect CRC and
-then fills up these two bytes with a flag about the correctnes of the CRC, the
+an arrived packet. If enabled the hardware now checks for the correct CRC and
+then fills up these two bytes with a flag about the correctness of the CRC, the
 RSSI value and an average correlation which can be used for LQI calculation
 later on. The driver now filled in the RSSI value as signalling information into
 the stack and made sure to cut one byte of the packet before pushing it as data
@@ -64,10 +64,10 @@ mature enough to hit the mainline linux kernel.
 \section{OpenEmbedded base system}
 On top of the Linux kernel we needed a small linux root file system which
 contains all userland components that are in use to get data from the kernel
-into IBR-DTN and back.
+into IBR-DTN as well as development and debugging tools.
 
-We have chosen OpenEmbedded as the build system here to buildsystem here to
-provide us with a working kernel image and matching rootfs we could flash onto
-the device. Some more informations about OpenEmbedded and our use on the Imote2
-could be found in the annex.
-
+We have chosen OpenEmbedded as the buildsystem here to provide us with a working
+kernel image and matching rootfs we could flash onto the device. In the
+development phase Openembedded was also used to cross compile the code for the
+target architecture. Some more informations about OpenEmbedded and our use on the
+Imote2 could be found in the annex.
