@@ -7,31 +7,39 @@ describe them in detail in a separate chapter.
 \section{Bootstraping}
 The Imote2 comes with TinyOS pre-installed. No bootloader or similar mechanism
 is installed to allow reflashing of the device. As a last resort there is JTAG
-available on the interface board and we used it together with OpenOCD and an
-JTAGKeyTiny to bootstrap our linux system. Blob was used as bootloader to load
-the kernel image from flash and give the right parameter to boot into the
-userland root file system. Detailed steps can be found in the annex.
+available on the interface board and we used it together with OpenOCD and a
+JTAGKeyTiny adapter to bootstrap our Linux system. Blob was used as bootloader to
+load the kernel image from flash and give the right parameter to boot into the
+userland root file system. Detailed steps how the image can be flashed with JTAG
+into the device can be found in the annex.
 
 \section{Linux Kernel}
 A recent Linux kernel (2.6.33) is used on the device. The basic support for the
-PXA271 and the Imote2 board was already available in this kernel. The support
-included the usage of the on board flash chip for storage as well as the usb
-client to act as a USB ethernet device showing up at th development host. More
-work was needed to go into the driver for the radio transceiver.
+PXA271 and the Imote2 board in particular was already available in this kernel.
+The support included the usage of the on board flash chip for storage as well as
+the USB client to act as a USB ethernet device showing up at the development host.
+Sadly the CPU frequency scaling support for the PXA platform did not work
+correctly. Once enabled the access to the flash did no longer work. Going to the
+ground of this was out of scope of this thesis but may be interested to do for a
+power consumption evaluation of the Imote2. More work was needed to go into the
+driver for the radio transceiver.
 
 \section{CC2420 Driver and ieee802154 stack}
-Different driver have been available for the CC2420. An older TosMac driver and
-a newer driver which used the ieee80154 networking stack from linux. We decided
-to go with the later one to have something that could go into the mainline
-kernel and therefor provide us with an easier long term use and maintenance.
+Different drivers have been available for the CC2420. An older TosMac driver and
+a newer driver which used the ieee80154 networking stack from the Linux kernel.
+We decided to go with the later one to have something that could go into the
+mainline kernel and therefor provide us with an easier long term use and
+maintenance.
 
 Like the 802.15.4 protocol the Linux stack is divided into two layers. The
 physical layer which is called ieee802154 and the mac layer which is called
 mac80154. While the former is already merged into the mainline kernel the later
 one is still being developed and lives inside the kernel repository of the
-linux-zigbee project.
+linux-zigbee project. This repository follows the mainline kernel very closely
+and based out work on it to submit fixes and enhancements directly to the driver
+maintainer.
 
-During initial research a cc2420 driver based on the new linux stack showed up
+During initial research a cc2420 driver based on the new Linux stack showed up
 and was submitted right in time for our research. Some debugging and bug fixing
 had to be applied to this driver before it was fully functional. The CC2420 has
 a lot hardware support for the different 802.15.4 related tasks that includes
@@ -46,23 +54,24 @@ strange packet length and broken packet headers as the first byte of the header
 was interpreted as the length byte. With this problem out of the way sending
 packets worked like it should.
 
-ON the receiving side another subtle problem had to be found and eliminated
+On the receiving side another subtle problem had to be found and eliminated
 before the driver could be fully used. Another hardware accelerated task is the
 CRC checking of an incoming packet. The 16bit CRC sits in the last two bytes of
-an arrived packet. If enabled the hardware now checks for the correct CRC and
+an arrived packet. If enabled the hardware checks for the correct CRC and
 then fills up these two bytes with a flag about the correctness of the CRC, the
 RSSI value and an average correlation which can be used for LQI calculation
-later on. The driver now filled in the RSSI value as signalling information into
-the stack and made sure to cut one byte of the packet before pushing it as data
-into the stack. The second byte was still attached and this resulted in failing
-length checks for MAC command inside the stack. Cutting of the second byte as
-well allowed us to receive and parse incoming packets and get a full duplex
-communication working. All fixes are sitting together with the cc2420 driver
-in the linux-zigbee tree to get merged with the mac802154 layer once they is
-mature enough to hit the mainline linux kernel.
+later on, before pushing it up to the driver. The driver now filled in the RSSI
+value as signalling information into the stack and made sure to cut one byte
+of the packet before pushing it as data into the stack. The second byte was
+still attached and this resulted in failing length checks for MAC commands
+inside the stack. Cutting of the second byte as well allowed us to receive
+and parse incoming packets and get a full duplex communication working. All
+fixes are sitting together with the cc2420 driver in the linux-zigbee tree to
+get merged with the mac802154 layer once they is mature enough to hit the
+mainline Linux kernel.
 
 \section{OpenEmbedded base system}
-On top of the Linux kernel we needed a small linux root file system which
+On top of the Linux kernel we needed a small Linux root file system which
 contains all userland components that are in use to get data from the kernel
 into IBR-DTN as well as development and debugging tools.
 
