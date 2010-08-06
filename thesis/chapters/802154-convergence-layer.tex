@@ -13,9 +13,7 @@ ID. The type is the known SOCK\_DGRAM and the default protocol is used. In the
 convergence layer we use the socket interface to transmit the data to the actual
 peer. It is also partially wrapped into a UnicastSocketLOWPAN class.
 
-\begin{lstlisting}
-	...
-
+\begin{lstlisting}[caption= ieee802154 socket interface, label=lstsocketapi]
         int sd;
         struct sockaddr_ieee802154 a;
 
@@ -30,8 +28,6 @@ peer. It is also partially wrapped into a UnicastSocketLOWPAN class.
 
         a.addr.short_addr = 0x8001;
 	connect(sd, (struct sockaddr *)&a, sizeof(a));
-
-	...
 \end{lstlisting}
 
 Over netlink it is possible to send different commands and set attributes of the
@@ -61,6 +57,22 @@ port configuration option. Filled in values need to be in decimal notation.
 
 The static routes to other nodes need also be configured.
 
+\begin{lstlisting}[caption= dtnd example configuration, label=lstconfig]
+cal_uri = dtn://1.dtn
+net_interfaces = lan0
+net_lan0_type = lowpan
+net_lan0_interface = wpan0
+net_lan0_port = 1920		#0x780
+
+routing = default
+
+# Static connections
+static1_address = 32769         #0x8001
+static1_port = 1920             #Abused for PAN?
+static1_uri = dtn://2.dtn
+static1_proto = zigbee
+\end{lstlisting}
+
 \section{Addressing}
 
 The specification for Low-Rate Wireless Personal Area Networks specifies to
@@ -70,7 +82,7 @@ on the PAN. The short address is supplied by the PAN coordinator.
 
 \section{Fragmentation}
 
-The maximal packet size in IEEE 802.15.4 is about 127 byte. Deducting the header
+The maximal packet size in IEEE 802.15.4 is about 128 byte. Deducting the header
 and other needed data we can transport about 115 byte of actual payload in a
 packet. So far IBR-DTN was build around the IP/TCP/UDP family which normally has
 a maximal transfer size of 1500 byte.
