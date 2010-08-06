@@ -28,7 +28,7 @@ over USB.
 
 Figure \ref{fig:imote2top} is a top view of the IPR2400 showing the USB client plug,
 the board connectors and the IEEE 802.15.4 radio transceiver with the onboard
-antenna. We go into more details about it in the next section.
+antenna. We go into more details about it in \ref{cc2420}.
 
 \begin{figure}
   \begin{center}
@@ -39,6 +39,7 @@ antenna. We go into more details about it in the next section.
 \end{figure}
 
 \section{CC2420 IEEE 802.15.4 Transceiver}
+\label{cc2420}
 The used IEEE 802.15.4 radio on the Imote2 is a CC2420 from ChipCon nowadays TI.
 Configuration and data transfer is done over SPI while some extra signalling
 GPIOs are used for interrupts. FIFOs for transmit as well as receive with a size
@@ -60,9 +61,9 @@ based systems. It is easy to integrate the SPI interface as well as the GPIO and
 interrupt lines into a system and the software support to drive the chip can be
 stripped down to a minimum if needed.
 
-The only downer is the lack of support for all frequency bands. The 2.4GHz
+The only downer is the lack of support for all frequency bands. The 2.4 GHz
 industrial, scientific and medical (ISM) band is already crowded with WiFi
 communication, baby monitors, home video streaming solutions and many other
 technologies. Having a chip that would be able to use the other radio bands
 would have opened the possibility to switch to a less crowded band and evaluate
-the performance in contrast to the 2.4GHz band.
+the performance in contrast to the 2.4 GHz band.
