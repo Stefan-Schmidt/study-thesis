@@ -2,7 +2,7 @@
 This chapter describes the basic software system we are using on the Imote2
 platform. Ranging from the bootloader through the Linux kernel up to the
 userland software stack. Our DTN implementation, IBR-DTN, is excluded here as we
-describe them in detail in a separate chapter.
+describe them in detail in \ref{ibr-dtn}.
 
 \section{Bootstraping}
 The Imote2 comes with TinyOS pre-installed. No bootloader or similar mechanism
@@ -11,7 +11,7 @@ available on the interface board and we used it together with OpenOCD and a
 JTAGKeyTiny adapter to bootstrap our Linux system. Blob was used as bootloader to
 load the kernel image from flash and give the right parameter to boot into the
 userland root file system. Detailed steps how the image can be flashed with JTAG
-into the device can be found in the annex.
+into the device can be found in \ref{annexopenocd}.
 
 \section{Linux Kernel}
 A recent Linux kernel (2.6.33) is used on the device. The basic support for the
@@ -79,4 +79,4 @@ We have chosen OpenEmbedded as the buildsystem here to provide us with a working
 kernel image and matching rootfs we could flash onto the device. In the
 development phase Openembedded was also used to cross compile the code for the
 target architecture. Some more informations about OpenEmbedded and our use on the
-Imote2 could be found in the annex.
+Imote2 could be found in \ref{annexoe}.
