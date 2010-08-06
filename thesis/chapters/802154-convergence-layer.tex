@@ -2,16 +2,22 @@
 \label{802154layer}
 \section{Interface with the Linux ieee802154 Stack}
 
+Like the convergence layers for UDP or TCP the job of the IEEE 802.15.4
+convergence layer is it to mediate between the Linux kernel provided interface
+to the ieee802514 stack and the IBR-DTN core. It has no knowledge about the
+bundle protocol or other DTN specific internals but provides only classes and
+functions to find a node, address it and transfer the raw data.
+
 The communication between the IEEE 802.15.4 convergence layer of IBR-DTN and the
 Linux ieee802154 stack is done over two separate channels. One is used for
 signalling and configuration and is handled over the kernel netlink mechanism.
 The second is used for the actual data transport and is exposed as standard
-socket interface. The listing below shows the usage of the socket interface. As
-domain AF\_IEEE802154 is used and a struct sockaddr\_ieee802154 fulfills the
+socket interface. Listing \ref{lstsocketapi} shows the usage of the socket interface.
+As domain AF\_IEEE802154 is used and a struct sockaddr\_ieee802154 fulfills the
 need for an adjustment of the addressing scheme as well as the usage of a PAN
 ID. The type is the known SOCK\_DGRAM and the default protocol is used. In the
 convergence layer we use the socket interface to transmit the data to the actual
-peer. It is also partially wrapped into a UnicastSocketLOWPAN class.
+peer. The functionlaity is wrapped into a UnicastSocketLOWPAN class.
 
 \begin{lstlisting}[caption= ieee802154 socket interface, label=lstsocketapi]
         int sd;
@@ -30,18 +36,20 @@ peer. It is also partially wrapped into a UnicastSocketLOWPAN class.
 	connect(sd, (struct sockaddr *)&a, sizeof(a));
 \end{lstlisting}
 
-Over netlink it is possible to send different commands and set attributes of the
+Over netlink it is possible to send different commands and a set attributes to the
 ieee802154 stack. The attributes contain among others informations about the
 address of the interface, its index, PAN ID, channel and more. The commands
 allow to get and set the different attributes, trigger a association, request a
 scan and others. The given functionality is used to implement the basic
 utilities for configuration as well as a PAN coordinator bundled together in
 the lowpan-tools package. In IBR-DTN we only use a small subset of this
-functionality. We ask for the short address when binding to the socket to
-receive incoming data. In the future we could also ask for the PAN ID and the
-hardware address to be more flexible. For the basic network setup we rely on the
-lowpan-tools utilities. With izcoordinator we set up a PAN coordinator on one
-node while we use iz to associate to this PAN from the other node. The PAN ID is
+functionality. We use the given interface name to ask for its short address when
+binding to the socket to receive incoming data. In the future we could also ask for
+the PAN ID and the hardware address to be more flexible.
+
+For the basic network setup we rely on the lowpan-tools utilities. With
+\emph{izcoordinator} we set up a PAN coordinator on one
+node while we use \emph{iz} to associate to this PAN from the other node. The PAN ID is
 given to both tools on the commandline and the coordinator hands the
 associating node a short address. With this basic configuration, which can
 somewhat be compared to a DHCP server and client, we start dtnd and are ready to
@@ -51,11 +59,12 @@ transmit and receive bundles.
 
 To make IBR-DTN work correctly with our IEEE 802.15.4 hardware we need to configure
 it and teach it about the interface name it has to use as well as that we are
-looking for a lowpan connection. Lowpan is just the internal name for the
+looking for a zigbee connection. Lowpan is just the internal name for the
 IEEE 802.15.4 convergence layer inside IBR-DTN. The PAN ID needs to be filled into the
 port configuration option. Filled in values need to be in decimal notation.
 
-The static routes to other nodes need also be configured.
+Listing \ref{lstconfig} also shows the configuration for static routes to other
+nodes.
 
 \begin{lstlisting}[caption= dtnd example configuration, label=lstconfig]
 cal_uri = dtn://1.dtn
@@ -68,29 +77,35 @@ routing = default
 
 # Static connections
 static1_address = 32769         #0x8001
-static1_port = 1920             #Abused for PAN?
+static1_port = 1920		#0x780
 static1_uri = dtn://2.dtn
 static1_proto = zigbee
 \end{lstlisting}
 
 \section{Addressing}
 
-The specification for Low-Rate Wireless Personal Area Networks specifies to
+The specification for Low-Rate Wireless Personal Area Networks specifies two
 types of addresses. All devices have an unique 64 bit extended address.
 Additional they can have a 16 bit short address that can be different depending
-on the PAN. The short address is supplied by the PAN coordinator.
+on the PAN. The short address is supplied by the PAN coordinator. for now we
+only support the short address type in IBR-DTN. Support for extended addresses
+are planned for the future. As well as the discovery of other nodes over a
+mbroadcast mechanism. Such a braodcast could be done by sending it to the 0xffff
+address with the correct PAN ID to reach all nodes within the PAN or with 0xffff
+as PAN ID to reach all nodes in range.
 
 \section{Fragmentation}
 
 The maximal packet size in IEEE 802.15.4 is about 128 byte. Deducting the header
 and other needed data we can transport about 115 byte of actual payload in a
-packet. So far IBR-DTN was build around the IP/TCP/UDP family which normally has
-a maximal transfer size of 1500 byte.
+packet. This payload size is way smaller to what other IBR-DTN convergence
+layers have used before. They have been build around the IP/TCP/UDP family which
+normally has a maximal transfer size of 1500 byte.
 
 The header size of the bundle protocol is not fixed but variable depending on
 the transported data and enabled options. It is as well possible that the header
 size is greater then the 115 byte payload we could offer with IEEE 802.15.4. The
-draft FIXME:CITE for a TCP convergence layer protocol could help here as it
+draft \cite{tcp-clayer-draft} for a TCP convergence layer protocol could help here as it
 defines a data transmission divided into several segments. Even the bundle
 header could be split into several segments this way and build together on the
 receiving side.
