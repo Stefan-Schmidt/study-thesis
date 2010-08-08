@@ -120,10 +120,20 @@ on sensor network platforms.
 
 Two projects are aiming to explore this area of research. One of them is the
 TinyOS based DTNLite \cite{dtnlite}. It is loosely based on the DTN overlay
-architecture. To deliver custody transfer  over the overlay they use techniques
+architecture. To deliver custody transfer over the overlay they use techniques
 like asynchronous message delivery. The concept is targeted at data collection
 applications which need to reach a central station for the collection over the
-network.
+network. The applications must be written or re-written to be DTNLite aware.
 
-Contiki DTN
+ContikiDTN \cite{contikidtn} is, like DTNLite, written for a special purpose embedded operating
+system in this case Contiki \footnote{http://www.sics.se/contiki/}. While
+DTNLite only aims to work with other DTNLite installations Contiki DTN aims for
+ContikiDTN is tied to only work with a TCP convergence layer. It was a design
+choice that no other convergence layer can be plugged in. This restriction goes
+down to the used µIP component of Contiki which offers the used protosockets
+only work with TCP.
 
+Both implementations have not been suitable for our work as they are either not
+standard compliant or have a design restriction to only TCP. Furthermore both
+are designed around a special purpose operating system while our aim was to work
+on the general purpose operating system Linux.
