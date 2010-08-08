@@ -2,18 +2,36 @@
 \label{ibr-dtn}
 \section{IBR-DTN}
 
-IBR-DTN is an implementation of the DTN bundle protocol \cite{RFC5050}. It is designed and
-implemented with efficiency in mind. Efficient memory usage is critical for
-use in embedded systems like wireless routers or smartphones. Another design
+IBR-DTN is an implementation of the DTN bundle protocol \cite{RFC5050}. It is
+designed and implemented with efficiency in mind. Efficient memory usage is critical
+for use in embedded systems like wireless routers or smartphones. Another design
 goal is the interoperability with DTN2 the reference implementation by the Delay
-Tolerant Networking Research Group (DTNRG).
+Tolerant Networking Research Group (DTNRG). In contrast to the reference
+implementation it can cope with only 4 MByte of memory. That way it can be run
+on wireless routers or similar constrained devices.
 
-In contrast to the reference implementation it can cope with only 4 MByte of
-memory. That way it can be run on wireless routers or similar constrainted
-devices.
+It features a UDP, TCP and a HTTP convergence layer. Al three are aimed to be
+compliant to the respective internet drafts. The work done for this thesis lays
+the ground for the next forth convergence layer in IBR-DTN. The details and
+shortcomings of our work are discussed in \ref{802154layer}. All these
+convergence layers are handled by the COnvergence Layer Manager as part of the
+modular design of IBR-DTN.
 
-The modular implementation of IBR-DTN comprises a DTN Core, Convergence Layer
-Manager, Bundle Router and Persistent storage.
+Another module handles the storage of bundles either in memory or as persistent
+storage. This allows flexible handling for different kind of scenarios. With
+persistent storage it is for example possible to forward a earlier received bundle
+even if the device had a power outage. To know what other nodes are reachable
+IBR-DTN offers two mechanisms. The first one is discovery which can be based on
+the UDP or TCP convergence layer as well as IP neighbour discovery draft for
+DTN. The second way is to set static route for the nodes inside the
+configuration file of IBR-DTN. This maps the name of a DTN node to its address
+and maybe some needed routing. Next to the default routing strategy there is
+also an implementation of epidemic routing with bloomfilter.
+
+Once a new node is discovered the bundles stored for it are directly forwarded.
+Some small applications that allow comfortable testing and debugging are also
+included in the suite. Dtnping for round trip time measurement and simple bundle
+send and receive tools.
 
 \section{Other DTN Implementations}
 
