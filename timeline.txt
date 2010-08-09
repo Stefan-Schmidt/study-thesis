@@ -47,7 +47,7 @@ X Dokumentation Implementierung
 Milestone 6: Ausarbeitung Phase 1 (2010-06-15)
 ----------------------------------------------
 X Related work finden und lesen
-- Zusammenfassen aller einzelnen Dokumentationen
+X Zusammenfassen aller einzelnen Dokumentationen
 X Einführung schreiben
 - Graphiken erstellen
 - Fazit
