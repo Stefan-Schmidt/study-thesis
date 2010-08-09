@@ -1,13 +1,48 @@
 \chapter{Evaluation}
-\section{Throughput}
-\section{Packetloss}
-\section{Range}
-\section{Round Trip Time}
+To verify our work on the convergence layer as well as compare it to other and
+find potential bottlenecks we evaluated out work under different test cases.
+Comparing the data throughput and packetloss for raw IEEE 802.15.4 against DTN
+as an additional layer. Distance measurement as well as Round Trip Time
+measurement was also done.
 
+\section{Throughput}
+
+\section{Packetloss}
+
+\section{Distance}
+The Imote2 has no connector for an external antenna but an on-board antenna
+only. To get an understanding what use cases this antenna, and therefor the
+whole board, could cover we combined our measurements with a distance
+measurement. To decide if a distance is still usable enough we used the
+packetloss as quality indicator. All distances which showed a packetloss above
+50 percent are rated as unusable. During our measurements such a high packetloss
+was shown for all distances higher then 33m.
+
+
+\section{DTN Round Trip Time}
+The last testcase was the round trip time of a DTN bundle. We used the
+\emph{dtnping} utility to send out a bundle, receive the answer and calculate
+the round trip time. Bundles are send to the \emph{echo} application of the
+receiving node. In our case this is directly the DTN daemon. The default payload
+size of a ping bundle was to big to our limited payload size on the IEEE
+802.15.4 convergence layer. We reduced the payload to 1 byte and used it for all
+tests. Table \ref{dtnrtt} shows the results of the measurement in milliseconds. We
+had 10 different scenarios for this test case and did five measurements for each.
+The first eight are the same we used for our throughput and packetloss test cases.
+We added two more scenarios to compare it against our usual test environment. The
+local scenario did send bundles over the UDP convergence layer on the loopback
+interface of our X86 workstation while the UDP scenario did send the bundles
+through the UDP convergence layer over an 1 Gbit Ethernet link to another
+machine.
+
+\begin{table}
 \begin{tabular}{l*{9}{c}r}
-        & 0m & 1m & 5m & 10m & 15m & 20m & 25m & 30m & localhost & Ethernet/UDP \\
+    & 0m & 1m & 5m & 10m & 15m & 20m & 25m & 30m & local & UDP \\
 \hline
-Minimum & 656.14 & 651.11 & 664.25 & 645.27 & 659.29 & 651.40 & 653.66 & 677.29 & 38.31 & 40.90 \\
-Median  & 676.17 & 662.38 & 674.85 & 674.85 & 676.46 & 672.03 & 672.47 & 686.60 & 38.87 & 41.26 \\
-Maximum & 693.14 & 678.49 & 684.96 & 685.11 & 695.76 & 684.22 & 687.26 & 693.64 & 39.41 & 41.56 \\
+Min & 656.14 & 651.11 & 664.25 & 645.27 & 659.29 & 651.40 & 653.66 & 677.29 & 38.31 & 40.90 \\
+Mean & 676.17 & 662.38 & 674.85 & 674.85 & 676.46 & 672.03 & 672.47 & 686.60 & 38.87 & 41.26 \\
+Max & 693.14 & 678.49 & 684.96 & 685.11 & 695.76 & 684.22 & 687.26 & 693.64 & 39.41 & 41.56 \\
 \end{tabular}
+\caption{ DTN Round Trip Time measurement results}
+\label{dtnrtt}
+\end{table}
