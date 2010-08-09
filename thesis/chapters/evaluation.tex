@@ -24,8 +24,24 @@ routine and the lookup went away. It was the smallest value we could still
 reliable send data with. Obviously such a big delay has a negative impact on the
 throughput, but without it no measurement would have been possible at all.
 
-Figure FIXME shows the data we collected with different distances between the
-nodes.
+Figure \ref{fig:throughput} shows the data we collected with different distances between the
+nodes. While the IEEE 802.15.4 throughput gradually goes down the DTN throughput
+has some interesting amplitudes and trespasses. We tried to normalize this with
+more measurements but every now and the  the DTN communication hang up sometimes
+for soem seconds and then continoued. It is yet unknown what part of DTN added
+these delays. The new convergence layer would be the first part that needs to be
+investigated. Due to the added delay in the testing software the throughput is
+npt really impressive. The theoreticcal maximum for IEEE 802.15.4 on the 2.4 GHz
+band is about 250 kbps.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=6.5cm]{images/throughput_802154}
+    \includegraphics[width=6.5cm]{images/throughput_dtn}
+    \caption{Data throughput for IEEE 802.15.4 and DTN}
+    \label{fig:throughput}
+  \end{center}
+\end{figure}
 
 \section{Packetloss}
 Throughput alone is of course nothing that tells us much about how reliable a
@@ -35,8 +51,26 @@ and during a post process the lost packet rate was calculated. No retransmission
 was done on the lower layers to avoid even more negative impact on the
 throughput and wrong statistics in this test.
 
-Figure FIXME shows the constant raise of the lost packet rate over the distance
-we did our measurements.
+Table \ref{tableloss} shows the constant raise of the lost packet rate over the
+distance we did our measurements. On a first look it looked suspicious that the
+packetloss for DTN was lower then for IEEE 802.15.4 although DTN was usd on top
+of IEEE 802.15.4. It can be explained though when having in mind that less
+packets where send with DTN in the same timeframe. The latency and short hangs
+we already discussed did not allow a higher throughput. The slower sending could
+explain the better packetloss rate. The single packets had a smaller probability
+to get damaged on the air from other packets and thus have a better packetloss
+rate.
+
+\begin{table}
+\begin{tabular}{lllllllll}
+    & 0m & 1m & 5m & 10m & 15m & 20m & 25m & 30m \\
+\hline
+802.15.4 & 0\% & 0\% & 10\% & 10\% & 19\% & 20\% & 31\% & 43\% \\
+DTN & 0\% & 0\% & 0\% & 15\% & 15\% & 15\% & 20\% & 30\% \\
+\end{tabular}
+\caption{Packetloss for IEEE 802.15.4 and DTN over distance}
+\label{tableloss}
+\end{table}
 
 \section{Distance}
 The Imote2 has no connector for an external antenna but an on-board antenna
@@ -62,6 +96,17 @@ local scenario did send bundles over the UDP convergence layer on the loopback
 interface of our X86 workstation while the UDP scenario did send the bundles
 through the UDP convergence layer over an 1 Gbit Ethernet link to another
 machine.
+
+The mean round trip time value does not change much from 0m up to 30m. Actually
+the values are so near to each other that they can not be rated relevant. That
+is of course no real surprise when the maximal distance is as short as 30m. A
+delay for the over the air traveling will not be significant on such a distance.
+
+More interesting is the difference between the round trip time on a IEEE
+802.15.4 network in contrast to 1 Gbit Ethernet. With a factor of 16 the latency
+added by IEEE 802.15.4 is really noticeable. Comparing the value against a
+IEEE 802.11 based wirless system could get some insight if this latency is based
+on wireless vs. wired or actually on the IEEE 802.15.4 protocol.
 
 \begin{table}
 \begin{tabular}{l*{9}{c}r}
