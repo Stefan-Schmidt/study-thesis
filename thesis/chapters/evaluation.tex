@@ -6,8 +6,37 @@ as an additional layer. Distance measurement as well as Round Trip Time
 measurement was also done.
 
 \section{Throughput}
+For the real payload data throughput we measured the payload data the receiving
+nodes could receive over time. We did the measurement for raw IEEE 802.154 and
+DTN traffic separately. For both test cases we send packages with the maximum
+payload from one node to another as fast as the system allowed. The maximum
+payload length for IEEE 802.15.4 packets have been 115 byte and for DTN 40 byte.
+
+During this tests a problem in the lower layers of the system showed up. It is
+still unclear if it is a driver or problem with the ieee802154 stack. The
+problem showed up when we tried to send the packets as fast as possible over the
+socket interface. After some packets the kernel part got stuck and stopped
+transmitting while still accepting data over the socket. The kernel log output
+showed a unbalanced IRQ as potential reason for the problem. Time did not allow
+to go to the ground of this problem and fix it probably so we went with a delay
+in the test application to circumvent this. We added a 100ms delay in the send
+routine and the lookup went away. It was the smallest value we could still
+reliable send data with. Obviously such a big delay has a negative impact on the
+throughput, but without it no measurement would have been possible at all.
+
+Figure FIXME shows the data we collected with different distances between the
+nodes.
 
 \section{Packetloss}
+Throughput alone is of course nothing that tells us much about how reliable a
+connection is. Therefor we also measured the packet loss while doing the
+throughput measurements. Inside the packet payload a sequence number was encoded
+and during a post process the lost packet rate was calculated. No retransmission
+was done on the lower layers to avoid even more negative impact on the
+throughput and wrong statistics in this test.
+
+Figure FIXME shows the constant raise of the lost packet rate over the distance
+we did our measurements.
 
 \section{Distance}
 The Imote2 has no connector for an external antenna but an on-board antenna
@@ -17,7 +46,6 @@ measurement. To decide if a distance is still usable enough we used the
 packetloss as quality indicator. All distances which showed a packetloss above
 50 percent are rated as unusable. During our measurements such a high packetloss
 was shown for all distances higher then 33m.
-
 
 \section{DTN Round Trip Time}
 The last testcase was the round trip time of a DTN bundle. We used the
