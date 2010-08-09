@@ -1,7 +1,7 @@
+\chapter{OpenOCD}
+\label{annexopenocd}
 \parindent=0pt                   % erzeugt bei einem Absatz eine
 \parskip=6pt plus 3pt            % Leerzeile (kein Einruecken)
-
-\label{annexopenocd}
 
 Use OpenOCD to do the initial blob install:
 
@@ -22,8 +22,10 @@ The used JTAG adapter is a JTAGkey Tiny from Amontec. OpenOCD already offers
 configurations for the JTAG adapter as well as the Imote2 board. Starting
 OpenOCD as following uses the right configuration files:
 
+\begin{verbatim}
 sudo openocd -f /usr/share/openocd/scripts/interface/jtagkey.cfg -f \\
 /usr/share/openocd/scripts/board/crossbow\_tech\_imote2.cfg
+\end{verbatim}
 
 Now you ca connect to the OpenOCD telnet interface on port 4444 with:
 
