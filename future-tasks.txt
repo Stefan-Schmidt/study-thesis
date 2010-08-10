@@ -1,0 +1,14 @@
+DTN:
+- Discovery with broadcast
+- Minimal fragmentation (TCP CL chunks)
+- PAN ID over netlink (no more port abuse)
+
+Kernel:
+- Test for FCS Flag in CC2420
+- Slowpath warning in CC2420
+- Hardware address and auto-ACK
+- TX power tweaking
+
+OE:
+- Kernel module recommandations
+- Update to newer kernel Kernel
