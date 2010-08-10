@@ -49,14 +49,12 @@ Milestone 6: Ausarbeitung Phase 1 (2010-06-15)
 X Related work finden und lesen
 X Zusammenfassen aller einzelnen Dokumentationen
 X Einführung schreiben
-- Graphiken erstellen
-- Fazit
-- Review Runde
+X Graphiken erstellen
+X Fazit
+X Review Runde
 
 Milestone 7: Ausarbeitung final (2010-06-22)
 --------------------------------------------
 - Review einarbeiten
 - Letzte Formatierungsänderungen
 - Drucken
-
-[2 Wochen vor eigentlichen Termin um Luft für etwaige Probleme zu lassen]
