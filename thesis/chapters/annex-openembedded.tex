@@ -2,12 +2,12 @@
 \label{annexoe}
 
 OpenEmbedded \footnote{http://www.openembedded.org/} is a build framwork for
-embedded Linux. It provides the meta-data which incooperates the knowloedge how
-to fecth, build, install, package and more for over 5000 Open Source projects.
+embedded Linux. It provides the meta-data which incorporates the knowledge how
+to fetch, build, install, package and more for over 5000 Open Source projects.
 
-Ading support for the Imote2 hardware to it did only required us to add a
+Adding support for the Imote2 hardware to it did only required us to add a
 \emph{machine configuration} which describes the hardware and let OpenEmbedded
-know about it. Below is this machine configuration:
+know about it. Below is this machine configuration we added:
 
 \begin{verbatim}
 #@TYPE: Machine
@@ -32,7 +32,7 @@ an image that could be build with the \emph{bitbake} application. Bitbake uses
 the meta-data provided by OpenEmbedded to actually build the software and the
 resulting firmware and kernel images.
 
-Aftr this we were able to create our complete firmware image by just executing
+After this we were able to create our complete firmware image by just executing
 bitbake like this:
 
 \begin{verbatim}

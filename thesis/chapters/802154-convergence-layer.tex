@@ -3,7 +3,7 @@
 \section{Interface with the Linux ieee802154 Stack}
 
 Like the convergence layers for UDP or TCP the job of the IEEE 802.15.4
-convergence layer is it to mediate between the Linux kernel provided interface
+convergence layer is to mediate between the Linux kernel provided interface
 to the ieee802514 stack and the IBR-DTN core. It has no knowledge about the
 bundle protocol or other DTN specific internals but provides only classes and
 functions to find a node, address it and transfer the raw data.
@@ -87,10 +87,10 @@ static1_proto = zigbee
 The specification for Low-Rate Wireless Personal Area Networks specifies two
 types of addresses. All devices have an unique 64 bit extended address.
 Additional they can have a 16 bit short address that can be different depending
-on the PAN. The short address is supplied by the PAN coordinator. for now we
+on the PAN. The short address is supplied by the PAN coordinator. For now we
 only support the short address type in IBR-DTN. Support for extended addresses
 are planned for the future. As well as the discovery of other nodes over a
-mbroadcast mechanism. Such a braodcast could be done by sending it to the 0xffff
+broadcast mechanism. Such a braodcast could be done by sending it to the 0xffff
 address with the correct PAN ID to reach all nodes within the PAN or with 0xffff
 as PAN ID to reach all nodes in range.
 
@@ -126,9 +126,10 @@ like asynchronous message delivery. The concept is targeted at data collection
 applications which need to reach a central station for the collection over the
 network. The applications must be written or re-written to be DTNLite aware.
 
-ContikiDTN \cite{contikidtn} is, like DTNLite, written for a special purpose embedded operating
-system in this case Contiki \footnote{http://www.sics.se/contiki/}. While
-DTNLite only aims to work with other DTNLite installations Contiki DTN aims for
+ContikiDTN \cite{contikidtn} is, like DTNLite, written for a special purpose
+embedded operating system in this case Contiki
+\footnote{http://www.sics.se/contiki/}. While DTNLite only aims to work with
+other DTNLite installations Contiki DTN aims for full standard compliance.
 ContikiDTN is tied to only work with a TCP convergence layer. It was a design
 choice that no other convergence layer can be plugged in. This restriction goes
 down to the used µIP component of Contiki which offers the used protosockets

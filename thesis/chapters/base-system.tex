@@ -2,7 +2,7 @@
 This chapter describes the basic software system we are using on the Imote2
 platform. Ranging from the bootloader through the Linux kernel up to the
 userland software stack. Our DTN implementation, IBR-DTN, is excluded here as we
-describe them in detail in \ref{ibr-dtn}.
+describe them in detail in \ref{ibr-dtn} and \ref{802154layer}.
 
 \section{Bootstraping}
 The Imote2 comes with TinyOS pre-installed. No bootloader or similar mechanism
@@ -12,7 +12,7 @@ available on the interface board and we used it together with OpenOCD
 JTAGKeyTiny adapter to bootstrap our Linux system. Blob was used as bootloader to
 load the kernel image from flash and give the right parameter to boot into the
 userland root file system. Detailed steps how the image can be flashed with JTAG
-into the device can be found in \ref{annexopenocd}.
+into the device can be found in appendix \ref{annexopenocd}.
 
 \section{Linux Kernel}
 A recent Linux kernel (2.6.33) is used on the device. The basic support for the
@@ -27,32 +27,32 @@ driver for the radio transceiver.
 
 \section{CC2420 Driver and ieee802154 stack}
 Different drivers have been available for the CC2420. An older TosMac driver and
-a newer driver which used the ieee80154 networking stack from the Linux kernel.
+a newer driver which used the ieee802154 networking stack from the Linux kernel.
 We decided to go with the later one to have something that could go into the
 mainline kernel and therefor provide us with an easier long term use, API
 stability and maintenance.
 
 Like the IEEE 802.15.4 protocol the Linux stack is divided into two layers. The
 physical layer which is called ieee802154 and the mac layer which is called
-mac80154. While the former is already merged into the mainline kernel the later
+mac802154. While the former is already merged into the mainline kernel the later
 one is still being developed and lives inside the kernel repository of the
 linux-zigbee \footnote{http://sourceforge.net/apps/trac/linux-zigbee/} project.
 This repository follows the mainline kernel very closely
 and we based our work on it to submit fixes and enhancements directly to the
-drive  maintainer.
+driver maintainer.
 
 The CC2420 driver based on the new Linux stack was submitted right in time for
 our research. Some debugging and bug fixing had to be applied to this driver
 before it was fully functional. The first problem was hidden in the hardware
 support for the different IEEE 802.15.4 related tasks that includes
-some some header preparation in hardware. That way it is not needed to
+some header preparation in hardware. That way it is not needed to
 completely assemble or disassemble a packet in the driver and the stack. While
 some parts are static enough to be set depending on some configuration registers
 the length of a to be send packet data unit (PDU) needs to be set from the driver
 as it is the only place that knows about the upcoming data length. Due to this
 the first byte that have to enter the data FIFO of the CC2420 has to be the
 length byte of the PDU. The initial driver missed that and this resulted in
-strange packet length and broken packet headers as the first byte of the header
+wrong packet length and broken packet headers as the first byte of the header
 was interpreted as the length byte. With this problem out of the way sending
 packets worked like it should.
 
@@ -69,7 +69,7 @@ still attached and this resulted in failing length checks for MAC commands
 inside the stack. Cutting of the second byte as well allowed us to receive
 and parse incoming packets and get a full duplex communication working. All
 fixes are sitting together with the cc2420 driver in the linux-zigbee tree to
-get merged with the mac802154 layer once they is mature enough to hit the
+get merged with the mac802154 layer once it is mature enough to hit the
 mainline Linux kernel.
 
 \section{OpenEmbedded base system}
@@ -81,4 +81,4 @@ We have chosen OpenEmbedded as the buildsystem here to provide us with a working
 kernel image and matching rootfs we could flash onto the device. In the
 development phase Openembedded was also used to cross compile the code for the
 target architecture. Some more informations about OpenEmbedded and our use on the
-Imote2 could be found in \ref{annexoe}.
+Imote2 could be found in annex \ref{annexoe}.

@@ -12,18 +12,18 @@ on wireless routers or similar constrained devices.
 
 It features a UDP, TCP and a HTTP convergence layer. Al three are aimed to be
 compliant to the respective internet drafts. The work done for this thesis lays
-the ground for the next forth convergence layer in IBR-DTN. The details and
+the ground for the forth convergence layer in IBR-DTN. The details and
 shortcomings of our work are discussed in \ref{802154layer}. All these
-convergence layers are handled by the COnvergence Layer Manager as part of the
+convergence layers are handled by the Convergence Layer Manager as part of the
 modular design of IBR-DTN.
 
-Another module handles the storage of bundles either in memory or as persistent
+Another module handles the storage of bundles either in memory or on persistent
 storage. This allows flexible handling for different kind of scenarios. With
 persistent storage it is for example possible to forward a earlier received bundle
 even if the device had a power outage. To know what other nodes are reachable
 IBR-DTN offers two mechanisms. The first one is discovery which can be based on
 the UDP or TCP convergence layer as well as IP neighbour discovery draft for
-DTN. The second way is to set static route for the nodes inside the
+DTN. The second way is to set static routes for the nodes inside the
 configuration file of IBR-DTN. This maps the name of a DTN node to its address
 and maybe some needed routing. Next to the default routing strategy there is
 also an implementation of epidemic routing with bloomfilter.

@@ -2,10 +2,10 @@
 While approaching a more and more ubiquitous network experience where we are
 connected to different personal area networks (PAN) or even the global internet
 around the clock two problems become more important. One problem is the power
-consumptions of devices that makes the ubiquity possible. In contrast to other
+consumption of devices that makes the ubiquity possible. In contrast to other
 computing devices we want them to be well hidden and do not disturb us. Changing
 batteries or having power cables around is not a real option for them. On the
-other hand wireless communication protocols with 802.11 \cite{ieee80211} as the
+other hand wireless communication protocols with IEEE 802.11 \cite{ieee80211} as the
 leading option are a good choice for mobile devices like notebooks or
 smartphones but are still to power consuming for small ubiquitous devices.
 With IEEE 802.15.4 \cite{ieee802154} a new protocol was designed for exactly such
@@ -18,19 +18,19 @@ designed for disrupted networks. They expect a working physical connection below
 them to work as expected. If this is not the case the packets may be just lost
 as in case of UDP or have to be re-transmitted. This re-transmission could be
 problematic if the network connection is more often unavailable then available.
-For such scenarios delay tolerant networking was designed to send to the
-packets, perhaps over several hopes, to the destination without needing to
+For such scenarios delay tolerant networking was designed to send the
+packets, perhaps over several hops, to the destination without needing to
 establish a channel between source and destination. In~\ref{introdtn} we give a
-short introduction into DTN before describing our convergence layer
-in~\ref{802154layer}.
+short introduction into DTN before describing the IBR-DTN implementation in
+\ref{ibr-dtn} and our convergence layer in \ref{802154layer}.
 
 \section{IEEE 802.15.4}
 \label{intro802154}
 Driven by an IEEE working group the IEEE 802.15.4 standard provides the physical and
-mac access control layer for so called low-rate wireless personal area network
+medium access control layer for so called low-rate wireless personal area network
 (LR-WPAN). The emphasis is on low cost devices for communication without
 infrastructure in a nearby environment. The communication range would be up to
-10m and offers nowadays a transfer rate up to 250 kbit/s. The standard specifies
+10m and offers nowadays a transfer rate up to 250 kbps. The standard specifies
 three possible frequency bands to operate in. The usage of some may be
 restricted in different countries but one band is available worldwide. Other
 features of IEEE 802.15.4 includes collision avoidance through CSMA/CA, build in
@@ -45,9 +45,9 @@ most famous would be ZigBee. With 6LowPAN there is also work underway to link
 LR-WPAN together with standard internet protocols like IPv6.
 
 Specified for an infrastructure-less network the topologies may be star or
-Peer-to-Peer based as well a composition of both. \ref{fig:802154topologies}
+Peer-to-Peer based as well a composition of both. Figure \ref{fig:802154topologies}
 shows how an example star network topology could look as well as a Peer-to-Peer
-topology. Two different device types are allowed. full-function device (FFD) and
+topology. Two different device types are allowed. Full-function device (FFD) and
 reduced-function device (RFD). The RFD is a really simple device which can only
 connect to one FFD at a time. Therefor it can only act as a leaf in all
 described topologies. In contrast the FFD is able to act as a coordinator to
@@ -91,7 +91,7 @@ network and storage load and may not be useful for constrained devices like
 sensor nodes.
 
 The bundle protocol specifies an overlay network which interacts with the lower
-layers over bundle convergence layers. The lower layers are not bound to be IP
+layers over convergence layers. The lower layers are not bound to be IP
 based even if that is the one widely used. In this thesis we describe the usage
 of the DTN implementation IBR-DTN over an IEEE 802.15.4 radio link on a Linux
 based system.
