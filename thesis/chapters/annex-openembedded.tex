@@ -1,27 +1,45 @@
 \chapter{OpenEmbedded}
 \label{annexoe}
 
+OpenEmbedded \footnote{http://www.openembedded.org/} is a build framwork for
+embedded Linux. It provides the meta-data which incooperates the knowloedge how
+to fecth, build, install, package and more for over 5000 Open Source projects.
+
+Ading support for the Imote2 hardware to it did only required us to add a
+\emph{machine configuration} which describes the hardware and let OpenEmbedded
+know about it. Below is this machine configuration:
+
 \begin{verbatim}
 #@TYPE: Machine
 #@Name: Crossbow iMote2
 #@DESCRIPTION: Machine configuration for Crossbow iMote 2
 TARGET_ARCH = "arm"
-
 PREFERRED_PROVIDER_virtual/kernel = "linux"
-
 PACKAGE_EXTRA_ARCHS = " iwmmxt"
-
 KERNEL_IMAGETYPE = "zImage"
 IMAGE_FSTYPE += "jffs2"
 EXTRA_IMAGECMD_jffs2 = "--l --pad=0x01DC0000 --eraseblock=0x20000"
-
-CMDLINE="root=/dev/mtdblock2 rootfstype=jffs2 console=ttyS2,115200 mem=32M"
-
+CMDLINE="root=/dev/mtdblock2 rootfstype=jffs2 console=ttyS2,115200"
 SERIAL_CONSOLE = "115200 ttyS2"
-
 require conf/machine/include/tune-xscale.inc
-
 ROOT_FLASH_SIZE ?= "30"
-
 MACHINE_FEATURES = "kernel26 usbgadget alsa iwmmxt"
 \end{verbatim}
+
+We also added the needed meta-data for the Linux kernel used on our Imote2 and
+the build description for IBR-DTN. In a final step we put all this together in
+an image that could be build with the \emph{bitbake} application. Bitbake uses
+the meta-data provided by OpenEmbedded to actually build the software and the
+resulting firmware and kernel images.
+
+Aftr this we were able to create our complete firmware image by just executing
+bitbake like this:
+
+\begin{verbatim}
+bitbake imote2-image
+\end{verbatim}
+
+All our changes are already included in the OpenEmbedded source code repository
+and could be used from there. The latest git revision we used for our work was
+6fc1c96131d4c4afabe815148f8e55656fb7f402. If any newer version have problems it
+is possible to revert back to this known good revision for future work.
