@@ -11,6 +11,9 @@ nodes could receive over time. We did the measurement for raw IEEE 802.154 and
 DTN traffic separately. For both test cases we send packages with the maximum
 payload from one node to another as fast as the system allowed. The maximum
 payload length for IEEE 802.15.4 packets have been 115 byte and for DTN 40 byte.
+That means that for our DTN tests we have a ratio from two third header to one
+third payload. As a consequence that results in lower throughput due to less
+actual payload can be transmitted in one packet.
 
 During this tests a problem in the lower layers of the system showed up. It is
 still unclear if it is a driver or problem with the ieee802154 stack. The
@@ -109,13 +112,25 @@ IEEE 802.11 based wirless system could get some insight if this latency is based
 on wireless vs. wired or actually on the IEEE 802.15.4 protocol.
 
 \begin{table}
-\begin{tabular}{l*{9}{c}r}
-    & 0m & 1m & 5m & 10m & 15m & 20m & 25m & 30m & local & UDP \\
+\begin{tabular}{lllllllll}
+    & 0m & 1m & 5m & 10m & 15m & 20m & 25m & 30m \\
 \hline
-Min & 656.14 & 651.11 & 664.25 & 645.27 & 659.29 & 651.40 & 653.66 & 677.29 & 38.31 & 40.90 \\
-Mean & 676.17 & 662.38 & 674.85 & 674.85 & 676.46 & 672.03 & 672.47 & 686.60 & 38.87 & 41.26 \\
-Max & 693.14 & 678.49 & 684.96 & 685.11 & 695.76 & 684.22 & 687.26 & 693.64 & 39.41 & 41.56 \\
+Min & 656.14 & 651.11 & 664.25 & 645.27 & 659.29 & 651.40 & 653.66 & 677.29 \\
+Mean & 676.17 & 662.38 & 674.85 & 674.85 & 676.46 & 672.03 & 672.47 & 686.60 \\
+Max & 693.14 & 678.49 & 684.96 & 685.11 & 695.76 & 684.22 & 687.26 & 693.64 \\
 \end{tabular}
-\caption{ DTN Round Trip Time measurement results}
+\caption{DTN Round Trip Time measurement results over IEEE 802.15.4}
 \label{dtnrtt}
+\end{table}
+
+\begin{table}
+\begin{tabular}{lll}
+    & Loopback & Ethernet/UDP \\
+\hline
+Min & 38.31 & 40.90 \\
+Mean & 38.87 & 41.26 \\
+Max & 39.41 & 41.56 \\
+\end{tabular}
+\caption{DTN Round Trip Time measurement results over UDP}
+\label{dtnrtt2}
 \end{table}
