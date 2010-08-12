@@ -98,3 +98,32 @@ layers over convergence layers. The lower layers are not bound to be IP
 based even if that is the one widely used. In this thesis we describe the usage
 of the DTN implementation IBR-DTN over an IEEE 802.15.4 radio link on a Linux
 based system.
+
+\section{Related Work}
+\label{relatedwork}
+
+While DTN is becoming more popular for research there are only a few research
+projects which combine DTN with sensor network technologies like IEEE 802.15.4.
+This is not surprising if one keeps in mind that the DTN architecture is
+complex and memory as well as bandwidth consuming. Both resources that are scare
+on sensor network platforms.
+
+Two projects are aiming to explore this area of research. One of them is the
+TinyOS based DTNLite \cite{dtnlite}. It is loosely based on the DTN overlay
+architecture. To deliver custody transfer over the overlay they use techniques
+like asynchronous message delivery. The concept is targeted at data collection
+applications which need to reach a central station for the collection over the
+network. The applications must be written or re-written to be DTNLite aware.
+
+ContikiDTN \cite{contikidtn} is, like DTNLite, written for a special purpose
+embedded operating system (in this case Contiki
+\footnote{http://www.sics.se/contiki/}). While DTNLite only aims to work with
+other DTNLite installations, ContikiDTN aims for full standard compliance.
+ContikiDTN is tied to only work with a TCP convergence layer. It was a design
+choice that no other convergence layer can be plugged in. This restriction is based in
+the usage of Contiki's µIP component which offers only TCP protosockets
+
+Both implementations have not been suitable for our work as they are either not
+standard compliant or have a design restriction to only use TCP. Furthermore both
+are designed around a special purpose operating system while our aim was to work
+on the general purpose operating system Linux.
