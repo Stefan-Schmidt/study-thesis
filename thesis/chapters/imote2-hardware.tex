@@ -19,7 +19,7 @@ to 104 MHz the CPU can be used in a low power mode on a low voltage level
 (0.85V). This was not done during this work, but would be an interesting target
 for later deployment.
 
-The PXA271 offers a wide range of periphery components already build in. The
+The PXA271 offers a wide range of periphery components already built in. The
 connections for these are available on the basic and advanced connectors on the
 board. Examples would be USB host and client, SDIO, UART, AC97 and I2S audio
 interfaces, I2C, SPI and GPIOs. USB client is already routed to a mini USB
@@ -28,7 +28,7 @@ over USB.
 
 Figure \ref{fig:imote2top} is a top view of the IPR2400 showing the USB client plug,
 the board connectors and the IEEE 802.15.4 radio transceiver with the onboard
-antenna. We go into more details about it in \ref{cc2420}.
+antenna. We go into more details about it in section \ref{cc2420}.
 
 \begin{figure}
   \begin{center}
@@ -40,30 +40,30 @@ antenna. We go into more details about it in \ref{cc2420}.
 
 \section{CC2420 IEEE 802.15.4 Transceiver}
 \label{cc2420}
-The used IEEE 802.15.4 radio on the Imote2 is a CC2420 from ChipCon nowadays TI.
+The IEEE 802.15.4 radio used on the Imote2 is a CC2420 from TI (formerly ChipCon).
 Configuration and data transfer is done over SPI while some extra signalling
 GPIOs are used for interrupts. FIFOs for transmit as well as receive with a size
-of 128 Byte, the maximal transfer unit in IEEE 802.15.4, are available. Interrupts
-are generated once a start frame delimiter (SFD) was recognized, a full package
-arrived in the FIFO or when a FIFO is going to reach a specified threshold.
+of 128 Bytes, the maximum transfer unit in IEEE 802.15.4, are available. Interrupts
+are generated once a start frame delimiter (SFD) has been recognized, a full package
+has arrived in the FIFO or when a FIFO is about to reach a specified threshold.
 
 The CC2420 is a full-function device (FFD) and as such can be used as
-coordinator or normal node. It only uses the 2.4 GHz band out of the three
-available bands. It supports all sixteen channels on this band. Channel 11
-(2.405 GHz) to 26 (2.480 GHz). It also supports the highest data rate available
+coordinator or normal node. It uses only the 2.4 GHz band out of the three
+available bands and supports all sixteen channels on this band (channel 11 / 2.405 GHz
+to channel 26 / 2.480 GHz). It also supports the highest data rate available
 in IEEE 802.15.4 with 250 kbps. Configuration modes for the radio transmission power
 are available to either save power or extend range.
 
-More hardware support is available for CRC checking, data encryption, clear
+Additional hardware support is available for CRC checking, data encryption, clear
 channel assignment, auto acknowledge, link quality indication and more. Due to
-his extensive hardware support this chip is also used in a lot microcontroller
+his extensive hardware support this chip is also used in many microcontroller
 based systems. It is easy to integrate the SPI interface as well as the GPIO and
 interrupt lines into a system and the software support to drive the chip can be
 stripped down to a minimum if needed.
 
-The only downer is the lack of support for all frequency bands. The 2.4 GHz
+The only disadvantage is the lack of support for all frequency bands. The 2.4 GHz
 industrial, scientific and medical (ISM) band is already crowded with WiFi
 communication, baby monitors, home video streaming solutions and many other
-technologies. Having a chip that would be able to use the other radio bands
+transmitters. Having a chip that would be able to use the other radio bands
 would have opened the possibility to switch to a less crowded band and evaluate
 the performance in contrast to the 2.4 GHz band.

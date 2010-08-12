@@ -1,6 +1,6 @@
 \chapter{IEEE 802.15.4 Convergence layer}
 \label{802154layer}
-\section{Interface with the Linux ieee802154 Stack}
+\section{Interface to the Linux ieee802154 Stack}
 
 Like the convergence layers for UDP or TCP the job of the IEEE 802.15.4
 convergence layer is to mediate between the Linux kernel provided interface
@@ -15,7 +15,7 @@ The second is used for the actual data transport and is exposed as standard
 socket interface. Listing \ref{lstsocketapi} shows the usage of the socket interface.
 As domain AF\_IEEE802154 is used and a struct sockaddr\_ieee802154 fulfills the
 need for an adjustment of the addressing scheme as well as the usage of a PAN
-ID. The type is the known SOCK\_DGRAM and the default protocol is used. In the
+ID. The type is the well-known SOCK\_DGRAM and the default protocol is used. In the
 convergence layer we use the socket interface to transmit the data to the actual
 peer. The functionlaity is wrapped into a UnicastSocketLOWPAN class.
 
@@ -36,8 +36,8 @@ peer. The functionlaity is wrapped into a UnicastSocketLOWPAN class.
 	connect(sd, (struct sockaddr *)&a, sizeof(a));
 \end{lstlisting}
 
-Over netlink it is possible to send different commands and a set attributes to the
-ieee802154 stack. The attributes contain among others informations about the
+Over netlink it is possible to send different commands and a set attributes in the
+ieee802154 stack. The attributes contain among others information about the
 address of the interface, its index, PAN ID, channel and more. The commands
 allow to get and set the different attributes, trigger a association, request a
 scan and others. The given functionality is used to implement the basic
@@ -86,7 +86,7 @@ static1_proto = zigbee
 
 The specification for Low-Rate Wireless Personal Area Networks specifies two
 types of addresses. All devices have an unique 64 bit extended address.
-Additional they can have a 16 bit short address that can be different depending
+Additionally they can have a 16 bit short address that can be different depending
 on the PAN. The short address is supplied by the PAN coordinator. For now we
 only support the short address type in IBR-DTN. Support for extended addresses
 are planned for the future. As well as the discovery of other nodes over a
@@ -96,26 +96,26 @@ as PAN ID to reach all nodes in range.
 
 \section{Fragmentation}
 
-The maximal packet size in IEEE 802.15.4 is about 128 byte. Deducting the header
-and other needed data we can transport about 115 byte of actual payload in a
-packet. This payload size is way smaller to what other IBR-DTN convergence
+The maximum packet size in IEEE 802.15.4 is about 128 bytes. Deducting the header
+and other needed data we can transport about 115 bytes of actual payload in a
+packet. This payload size is much smaller than what other IBR-DTN convergence
 layers have used before. They have been build around the IP/TCP/UDP family which
-normally has a maximal transfer size of 1500 byte.
+normally has a maximum transfer size of 1500 bytes.
 
 The header size of the bundle protocol is not fixed but variable depending on
-the transported data and enabled options. It is as well possible that the header
-size is greater then the 115 byte payload we could offer with IEEE 802.15.4. The
+the transported data and enabled options. It is also possible that the header
+size is greater than the 115 bytes of payload we could offer with IEEE 802.15.4. The
 draft \cite{tcp-clayer-draft} for a TCP convergence layer protocol could help here as it
-defines a data transmission divided into several segments. Even the bundle
-header could be split into several segments this way and build together on the
+defines data transmission divided into several segments. Even the bundle
+header could be split into several segments this way and reassembled on the
 receiving side.
 
 \section{Related Work}
 \label{relatedwork}
 
-While DTN is getting more popular for research there are only a few research
-projects then combine DTN with sensor network technologies like IEEE 802.15.4.
-That is not surprising if one keeps in mind that the DTN architecture is is
+While DTN is becoming more popular for research there are only a few research
+projects which combine DTN with sensor network technologies like IEEE 802.15.4.
+This is not surprising if one keeps in mind that the DTN architecture is is
 complex and memory as well as bandwidth consuming. Both resources that are scare
 on sensor network platforms.
 
@@ -127,15 +127,14 @@ applications which need to reach a central station for the collection over the
 network. The applications must be written or re-written to be DTNLite aware.
 
 ContikiDTN \cite{contikidtn} is, like DTNLite, written for a special purpose
-embedded operating system in this case Contiki
-\footnote{http://www.sics.se/contiki/}. While DTNLite only aims to work with
-other DTNLite installations Contiki DTN aims for full standard compliance.
+embedded operating system (in this case Contiki
+\footnote{http://www.sics.se/contiki/}). While DTNLite only aims to work with
+other DTNLite installations, ContikiDTN aims for full standard compliance.
 ContikiDTN is tied to only work with a TCP convergence layer. It was a design
-choice that no other convergence layer can be plugged in. This restriction goes
-down to the used µIP component of Contiki which offers the used protosockets
-only work with TCP.
+choice that no other convergence layer can be plugged in. This restriction is based in
+the usage of Contiki's µIP component which offers only TCP protosockets
 
 Both implementations have not been suitable for our work as they are either not
-standard compliant or have a design restriction to only TCP. Furthermore both
+standard compliant or have a design restriction to only use TCP. Furthermore both
 are designed around a special purpose operating system while our aim was to work
 on the general purpose operating system Linux.

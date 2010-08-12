@@ -13,25 +13,25 @@ as future development and optimizations with other interested parties. This
 gives us a good base for new research projects work around Linux, IBR-DTN and
 IEEE 802.15.4.
 
-The written convergence layer supports sending and receiving for bundles up to a
+The new convergence layer supports sending and receiving for bundles up to a
 payload of 40 bytes. That is the biggest limitation of the current work. To
 improve this situation different approaches can be taken. One of the newest
 additions in IBR-DTN is header compression. This technique makes it possible to
 shrink the header by using numerical addresses and avoid the dictionary to be
 transmitted. Given that the current ratio in a bundle over IEEE 802.15.4 is two
-third for the header and only one third for the actual payload that would indeed
+thirds for the header and only one third for the actual payload that would indeed
 improve the situation. To solve the problem for larger bundles a fragmentation
 within the convergence layer could be used to split the bundles into smaller
-chunks, transmit them and put them together within the convergence layer on the
+chunks, transmit and then reassemble them within the convergence layer on the
 receiving side. Such a mechanism is already described in the TCP convergence
 layer draft \cite{tcp-clayer-draft} and implemented in IBR-DTN. In the future
-work this could get adapted to the IEEE 802.15.4 convergence layer to fully
-solve the problem of restricted payload length.
+work this could be adapted to the IEEE 802.15.4 convergence layer to fully
+solve the problem of the restricted payload length.
 
 The evaluation also revealed some initial performance statistics which can be
-used to improve the current implementation. One of the most interesting reveals
+used to improve the current implementation. One of the most interesting points
 is that the raw IEEE 802.15.4 data throughput performance, without any DTN
-involved, is already way beyond the theoretical maximum of 250 kbps. With only
+involved, is already way below the theoretical maximum of 250 kbps. With only
 4600 bps it reaches only 1.8 percent of the theoretical maximum. Partly this
 comes from a delay added in the test application to allow a reliable test
 environment still this explains not everything. Future research on this topic

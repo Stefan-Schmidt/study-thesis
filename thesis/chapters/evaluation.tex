@@ -8,32 +8,32 @@ measurement have also been done.
 \section{Throughput}
 For the real payload data throughput we measured the payload data the receiving
 nodes could receive over time. We did the measurement for raw IEEE 802.15.4 and
-DTN traffic separately. For both test cases we send packages with the maximum
+DTN traffic separately. For both test cases we sent packages with the maximum
 payload from one node to another as fast as the system allowed. The maximum
-payload length for IEEE 802.15.4 packets have been 115 byte and for DTN 40 byte.
-That means that for our DTN tests we have a ratio from two third header to one
-third payload. As a consequence that results in lower throughput due to less
-actual payload can be transmitted in one packet.
+payload length for IEEE 802.15.4 packets has been 115 bytes and for DTN 40 bytes.
+That means that for our DTN tests we have a ratio of two thirds header to one
+third payload. As a consequence this results in lower throughput due to less
+actual payload per packet.
 
-During this tests a problem in the lower layers of the system showed up. It is
+During these tests a problem in the lower layers of the system was exposed. It is
 still unclear if it is a driver or a problem with the ieee802154 stack. The
 problem showed up when we tried to send the packets as fast as possible over the
 socket interface. After some packets the kernel part got stuck and stopped
 transmitting while still accepting data over the socket. The kernel log output
-showed a unbalanced IRQ as potential reason for the problem. Time did not allow
-to go to the ground of this problem and fix it probably so we went with a delay
+showed an unbalanced IRQ as a potential reason for this problem. Time did not allow
+to go to the ground of this problem and fix it properly so we used a delay
 in the test application to circumvent this. We added a 100ms delay in the send
 routine and the lookup went away. It was the smallest value we could still
 reliable send data with. Obviously such a big delay has a negative impact on the
 throughput, but without it no measurement would have been possible at all.
 
-Figure \ref{fig:throughput} shows the data we collected with different distances between the
-nodes. While the IEEE 802.15.4 throughput gradually goes down the DTN throughput
+Figure \ref{fig:throughput} shows the data we collected over different distances between the
+nodes. While the IEEE 802.15.4 throughput gradually decreases, the DTN throughput
 has some interesting amplitudes and trespasses. We tried to normalize this with
-more measurements but every now and then the DTN communication hang up sometimes
-for some seconds and then continued. It is yet unknown what part of DTN added
+more measurements but every now and then the DTN communication would hang
+for some seconds and then continue. It is not yet known which part of DTN added
 these delays. The new convergence layer would be the first part that needs to be
-investigated. Due to the added delay in the testing software the throughput is
+investigated. Due to the new delay in the testing software the throughput is
 not really impressive. The theoretical maximum for IEEE 802.15.4 on the 2.4 GHz
 band is about 250 kbps and in our tests we only reached a maximum throughput of
 4600 bps.
@@ -49,17 +49,17 @@ band is about 250 kbps and in our tests we only reached a maximum throughput of
 
 \section{Packet loss}
 Throughput alone is of course nothing that tells us much about how reliable a
-connection is. Therefor we also measured the packet loss while doing the
+connection is. Therefore we also measured the packet loss while doing the
 throughput measurements. Inside the packet payload a sequence number was encoded
-and during a post process the lost packet rate was calculated. No retransmission
+and during post processing the packet loss rate was calculated. No retransmission
 was done on the lower layers to avoid even more negative impact on the
 throughput and wrong statistics in this test.
 
 Table \ref{tableloss} shows the constant raise of the lost packet rate over the
 distance we did our measurements. On a first look it looked suspicious that the
 packet loss for DTN was lower then for IEEE 802.15.4 although DTN was used on top
-of IEEE 802.15.4. It can be explained though when having in mind that less
-packets where send with DTN in the same timeframe. The latency and short hangs
+of IEEE 802.15.4. It can be explained though when keeping in mind that less
+packets where sent with DTN in the same timeframe. The latency and short hangs
 we already discussed did not allow a higher throughput. The slower sending could
 explain the better packet loss rate. The single packet had a smaller probability
 to get damaged on the air from other packets and thus have a lower packet loss
@@ -78,7 +78,7 @@ DTN & 0\% & 0\% & 0\% & 15\% & 15\% & 15\% & 20\% & 30\% \\
 
 \section{Distance}
 The Imote2 has no connector for an external antenna but an on-board antenna
-only. To get an understanding what use cases this antenna, and therefor the
+only. To get an understanding which use cases this antenna, and therefore the
 whole board, could cover we combined our measurements with a distance
 measurement. To decide if a distance is still usable enough we used the
 packet loss as quality indicator. All distances which showed a packet loss above
@@ -88,9 +88,9 @@ was shown for all distances higher then 33m.
 \section{DTN Round Trip Time}
 The last test case was the round trip time of a DTN bundle. We used the
 \emph{dtnping} utility to send out a bundle, receive the answer and calculate
-the round trip time. Bundles are send to the \emph{echo} application of the
+the round trip time. Bundles are sent to the \emph{echo} application of the
 receiving node. In our case this is directly the DTN daemon. The default payload
-size of a ping bundle was to big to our limited payload size on the IEEE
+size of a ping bundle was too big for our limited payload size on the IEEE
 802.15.4 convergence layer. We reduced the payload to 1 byte and used it for all
 tests. Table \ref{dtnrtt} shows the results of the measurement in milliseconds. We
 had 10 different scenarios for this test case and did five measurements for each.
@@ -104,7 +104,7 @@ machine.
 
 The mean round trip time value does not change much from 0m up to 30m. Actually
 the values are so near to each other that they can not be rated relevant. That
-is of course no real surprise when the maximal distance is as short as 30m. A
+is of course no real surprise when the maximum distance is as short as 30m. A
 delay for the over the air traveling will not be significant on such a distance.
 
 More interesting is the difference between the round trip time on a IEEE
