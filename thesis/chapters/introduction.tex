@@ -53,7 +53,10 @@ reduced-function device (RFD). The RFD is a very simple device which can only
 connect to one FFD at a time. Therefore it can only act as a leaf in all
 described topologies. In contrast, the FFD is able to act as a coordinator to
 create a new PAN and relay messages to other nodes. At least one coordinator
-is needed in every network. One thing to keep in mind is that routing is not
+is needed in every network. It creates the network and assigns addresses to
+associating nodes. These assigned addresses are short addresses with only 16 bit
+and only unique withing the PAN. Additionally every node has a long address with
+64 bit unique worldwide. One thing to keep in mind is that routing is not
 covered by the standard. To relay messages over multiple hops the supplementing
 upper layers need to take care of this.
 
