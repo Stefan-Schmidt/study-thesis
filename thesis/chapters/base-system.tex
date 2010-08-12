@@ -4,7 +4,7 @@ platform. Ranging from the bootloader through the Linux kernel up to the
 userland software stack. Our DTN implementation, IBR-DTN, is excluded here as we
 describe them in detail in chapters \ref{ibr-dtn} and \ref{802154layer}.
 
-\section{Bootstraping}
+\section{Bootstrapping}
 The Imote2 comes with TinyOS pre-installed. No bootloader or similar mechanism
 is installed to allow reflashing of the device. As a last resort there is JTAG
 available on the interface board which we used  with OpenOCD
@@ -24,24 +24,41 @@ Sadly the CPU frequency scaling support for the PXA platform does not work
 correctly. Once enabled the access to the flash did no longer work.
 Solving of this was out of scope for this thesis.
 
-\section{CC2420 Driver and ieee802154 stack}
+\section{Linux Kernel IEEE 802.15.4 Stack}
+Like the IEEE 802.15.4 protocol the Linux stack is divided into two layers. The
+physical layer which is called ieee802154 and the mac layer which is called
+mac802154. While the former is already merged into the mainline kernel the latter
+is still being developed and lives inside the kernel repository of the
+linux-zigbee \footnote{http://sourceforge.net/apps/trac/linux-zigbee/} project.
+This repository follows the mainline kernel very closely and we based our work
+on it to submit fixes and enhancements directly to the driver maintainer.
+
+The stack had all the needed functionality used in this thesis, but is still
+missing some bigger parts before being feature complete. The two biggest missing
+features until now are auto acknowledgement and security support.
+
+The kernel stack goes hand in hand with some userspace tools bundled together as
+lowpan-tools. They contain the basic utilities to bring up and configure
+interfaces, setup a PAN and have a PAN coordinator running as system daemon. The
+\emph{iz} tools is responsible for the interface setup like short address,
+channel and PAN ID setting. The system daemon \emph{izcoordinator} takes over
+the role of a PAN coordinator form the IEEE 802.15.4 specification. Once started
+it runs in the background listening for association requests and handles the
+leases for the short addresses assigned to the nodes.
+
+\section{CC2420 Driver}
 Different drivers have been available for the CC2420. An older TosMac driver and
 a newer driver which used the ieee802154 networking stack from the Linux kernel.
 We decided to go with the latter one to have something that could go into the
 mainline kernel and therefore provide us with an easier long term use, API
 stability and maintenance.
 
-Like the IEEE 802.15.4 protocol the Linux stack is divided into two layers. The
-physical layer which is called ieee802154 and the mac layer which is called
-mac802154. While the former is already merged into the mainline kernel the latter
-is still being developed and lives inside the kernel repository of the
-linux-zigbee \footnote{http://sourceforge.net/apps/trac/linux-zigbee/} project.
-This repository follows the mainline kernel very closely
-and we based our work on it to submit fixes and enhancements directly to the
-driver maintainer.
-
 The CC2420 driver based on the new Linux stack was submitted right in time for
-our research. Some debugging and bug fixing had to be applied to this driver
+our research. Some initial testing showed that the basic hardware communication
+was working correctly with the driver. However the transmit and receive path was
+not working as expected and showed malformatted packets on the air interface.
+
+A fair bit of debugging and bug fixing had to be applied to this driver
 before it was fully functional. The first problem was hidden in the hardware
 support for the different IEEE 802.15.4 related tasks which include  header
 preparation in hardware. That way it is not needed to
@@ -71,7 +88,7 @@ fixes are sitting together with the cc2420 driver in the linux-zigbee tree to
 get merged with the mac802154 layer once it is mature enough to hit the
 mainline Linux kernel.
 
-\section{OpenEmbedded base system}
+\section{OpenEmbedded Base System}
 On top of the Linux kernel we needed a small Linux root file system which
 contains all userland components that are in use to get data from the kernel
 into IBR-DTN as well as development and debugging tools.
