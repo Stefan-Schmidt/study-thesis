@@ -41,8 +41,16 @@ band is about 250 kbps and in our tests we only reached a maximum throughput of
 \begin{figure}
   \begin{center}
     \includegraphics[width=6.5cm]{images/throughput_802154}
+    \caption{Data throughput for IEEE 802.15.4}
+    \label{fig:throughput}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
     \includegraphics[width=6.5cm]{images/throughput_dtn}
-    \caption{Data throughput for IEEE 802.15.4 and DTN}
+    \includegraphics[width=6.5cm]{images/throughput_dtn2}
+    \caption{Data throughput for DTN}
     \label{fig:throughput}
   \end{center}
 \end{figure}
@@ -51,7 +59,7 @@ band is about 250 kbps and in our tests we only reached a maximum throughput of
 Throughput alone is of course nothing that tells us much about how reliable a
 connection is. Therefore we also measured the packet loss while doing the
 throughput measurements. Inside the packet payload a sequence number was encoded
-and during post processing the packet loss rate was calculated. No retransmission
+and was used to calculate the packet loss rate. No retransmission
 was done on the lower layers to avoid even more negative impact on the
 throughput and wrong statistics in this test.
 
