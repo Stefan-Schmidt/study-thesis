@@ -50,7 +50,7 @@ the PAN ID and the hardware address to be more flexible.
 For the basic network setup we rely on the lowpan-tools utilities. With
 \emph{izcoordinator} we set up a PAN coordinator on one
 node while we use \emph{iz} to associate to this PAN from the other node. The PAN ID is
-given to both tools on the command line and the coordinator hands the
+given to both tools on the command line and the coordinator assigns the
 associating node a short address. With this basic configuration, which can
 somewhat be compared to a DHCP server and client, we start dtnd and are ready to
 transmit and receive bundles.
@@ -89,15 +89,15 @@ types of addresses. All devices have an unique 64 bit extended address.
 Additionally they can have a 16 bit short address that can be different depending
 on the PAN. The short address is supplied by the PAN coordinator. For now we
 only support the short address type in IBR-DTN. Support for extended addresses
-are planned for the future. As well as the discovery of other nodes over a
-broadcast mechanism. Such a braodcast could be done by sending it to the 0xffff
+is planned for the future. As well as the discovery of other nodes over a
+broadcast mechanism. Such a broadcast could be done by sending it to the 0xffff
 address with the correct PAN ID to reach all nodes within the PAN or with 0xffff
 as PAN ID to reach all nodes in range.
 
 \section{Fragmentation}
 
-The maximum packet size in IEEE 802.15.4 is about 128 bytes. Deducting the header
-and other needed data we can transport about 115 bytes of actual payload in a
+The maximum packet size in IEEE 802.15.4 is 128 bytes. Deducting the header
+and other needed data we can transport 115 bytes of actual payload in a
 packet. This payload size is much smaller than what other IBR-DTN convergence
 layers have used before. They have been build around the IP/TCP/UDP family which
 normally has a maximum transfer size of 1500 bytes.

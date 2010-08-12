@@ -19,7 +19,7 @@ A recent Linux kernel (2.6.33) is used on the device. The basic support for the
 PXA271 and the Imote2 board in particular was already available in this kernel.
 The support included the usage of the on board flash chip for storage as well as
 the USB client to act as a USB ethernet device showing up at the development host.
-Sadly the CPU frequency scaling support for the PXA platform did not work
+Sadly the CPU frequency scaling support for the PXA platform does not work
 correctly. Once enabled the access to the flash did no longer work.
 Solving of this was out of scope for this thesis but may be interesting to do for a
 power consumption evaluation of the Imote2.
@@ -43,8 +43,8 @@ driver maintainer.
 The CC2420 driver based on the new Linux stack was submitted right in time for
 our research. Some debugging and bug fixing had to be applied to this driver
 before it was fully functional. The first problem was hidden in the hardware
-support for the different IEEE 802.15.4 related tasks which include
-some header preparation in hardware. That way it is not needed to
+support for the different IEEE 802.15.4 related tasks which include  header
+preparation in hardware. That way it is not needed to
 completely assemble or disassemble a packet in the driver and the stack. While
 some parts are static enough to be set depending on some configuration registers
 the length of an outgoing packet data unit (PDU) needs to be set from the driver
@@ -58,7 +58,7 @@ packets worked like it should.
 On the receiving side another subtle problem had to be found and eliminated
 before the driver could be fully used. Another hardware accelerated task is the
 CRC checking of an incoming packet. The 16bit CRC sits in the last two bytes of
-an incoming packet. If enabled the hardware checks for the correct CRC and
+an incoming packet. If enabled, the hardware checks for the correct CRC and
 then replaces these two bytes with a flag about the correctness of the CRC, the
 RSSI value and an average correlation which can be used for LQI calculation
 later on, before pushing it up to the driver. The driver now filled in the RSSI

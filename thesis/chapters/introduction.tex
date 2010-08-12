@@ -29,12 +29,11 @@ short introduction to DTN before describing the IBR-DTN implementation in chapte
 Driven by an IEEE working group the IEEE 802.15.4 standard provides the physical and
 media access control layer for so called low-rate wireless personal area network
 (LR-WPAN). The emphasis is on low cost devices for communication without
-infrastructure over small distances. The communication range would be up to
-10m and offers a transfer rate up to 250 kbps. The standard specifies
-three possible frequency bands to operate in. The usage of some may be
-restricted in different countries but one band is available worldwide. Other
-features of IEEE 802.15.4 includes collision avoidance through CSMA/CA, built in
-support for secure communication through cryptography, power management through
+infrastructure over small distances. The offered transfer rate can be up to 250 kbps.
+The standard specifies three possible frequency bands to operate in. The usage of
+some may be restricted in different countries but one band is available worldwide.
+Other features of IEEE 802.15.4 includes collision avoidance through CSMA/CA, built
+in support for secure communication through cryptography, power management through
 link quality control and energy detection as well as reserved time slots for
 real-time operations.
 
@@ -50,7 +49,7 @@ shows how an example star network topology could look as well as a Peer-to-Peer
 topology. Two different device types are allowed: full-function device (FFD) and
 reduced-function device (RFD). The RFD is a very simple device which can only
 connect to one FFD at a time. Therefore it can only act as a leaf in all
-described topologies. In contrast the FFD is able to act as a coordinator to
+described topologies. In contrast, the FFD is able to act as a coordinator to
 create a new PAN and relay messages to other nodes. At least one coordinator
 is needed in every network. One thing to keep in mind is that routing is not
 covered by the standard. To relay messages over multiple hops the supplementing

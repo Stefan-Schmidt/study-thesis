@@ -5,7 +5,7 @@ capabilities. For our work we only used the Imote2 Processor Radio Board
 (IPR2400) and the Interface Board (IIB2400) for serial console access and JTAG.
 
 While other sensor nodes are tightly constrained regarding their computing power
-and storage the Imote2 is based on a powerful XScale CPU and equipped with 32
+and storage, the Imote2 is based on a powerful XScale CPU and equipped with 32
 MByte of SDRAM as well as flash storage. This comes of course with a higher power
 consumption cost compared to microcontroller based sensor nodes like the T-Mote
 Sky. On the other hand exactly these components are allowing us to run a full
@@ -19,9 +19,9 @@ to 104 MHz the CPU can be used in a low power mode on a low voltage level
 (0.85V). This was not done during this work, but would be an interesting target
 for later deployment.
 
-The PXA271 offers a wide range of periphery components already built in. The
-connections for these are available on the basic and advanced connectors on the
-board. Examples would be USB host and client, SDIO, UART, AC97 and I2S audio
+The PXA271 offers a wide range of peripheral components already built in. The
+connectors for these are available on the basic and advanced connectors on the
+board. Examples are USB host and client, SDIO, UART, AC97 and I2S audio
 interfaces, I2C, SPI and GPIOs. USB client is already routed to a mini USB
 connector on the board. This can be used to access the system and supply power
 over USB.
@@ -54,7 +54,7 @@ to channel 26 / 2.480 GHz). It also supports the highest data rate available
 in IEEE 802.15.4 with 250 kbps. Configuration modes for the radio transmission power
 are available to either save power or extend range.
 
-Additional hardware support is available for CRC checking, data encryption, clear
+Additional hardware support is available for CRC calculation, data encryption, clear
 channel assignment, auto acknowledge, link quality indication and more. Due to
 his extensive hardware support this chip is also used in many microcontroller
 based systems. It is easy to integrate the SPI interface as well as the GPIO and
