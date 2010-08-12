@@ -14,7 +14,7 @@ more information about it prepared in section~\ref{intro802154}.
 
 The second problem are network connection disruptions - be it due to movement or
 the other changes. The most widely used protocol family with IP, UDP, TCP is not
-designed to cope with disrupted networks. They need a (mostly) working physical connection
+designed to cope with disrupted networks. They need an established physical connection
 to work as expected. If this is not the case the packets may be just lost
 as in case of UDP or have to be re-transmitted. This re-transmission could be
 problematic if the network connection is unavailable more often then available.
@@ -30,12 +30,14 @@ Driven by an IEEE working group the IEEE 802.15.4 standard provides the physical
 media access control layer for so called low-rate wireless personal area network
 (LR-WPAN). The emphasis is on low cost devices for communication without
 infrastructure over small distances. The offered transfer rate can be up to 250 kbps.
-The standard specifies three possible frequency bands to operate in. The usage of
-some may be restricted in different countries but one band is available worldwide.
+The standard specifies three possible frequency bands to operate in. 16 channels
+in the 2450 MZz band, 10 channels in the 915 MHz band and one channel in the 868
+MHz band. The usage of some may be restricted in different countries but 2450 MHz
+band is available worldwide.
 Other features of IEEE 802.15.4 includes collision avoidance through CSMA/CA, built
 in support for secure communication through cryptography, power management through
-link quality control and energy detection as well as reserved time slots for
-real-time operations.
+link quality control and energy detection as well as acknowledgements,
+retransmissions and reserved time slots for real-time operations.
 
 As already described the standard only covers the two lowest layer of a
 protocol stack. Supplementing it to a fully functional networking stack is the aim
@@ -45,8 +47,8 @@ LR-WPAN with standard internet protocols like IPv6.
 
 Specified for an infrastructure-less network the topologies may be star or
 Peer-to-Peer based as well a combination of both. Figure \ref{fig:802154topologies}
-shows how an example star network topology could look as well as a Peer-to-Peer
-topology. Two different device types are allowed: full-function device (FFD) and
+shows examples for these topologies. Two different device types are allowed:
+full-function device (FFD) and
 reduced-function device (RFD). The RFD is a very simple device which can only
 connect to one FFD at a time. Therefore it can only act as a leaf in all
 described topologies. In contrast, the FFD is able to act as a coordinator to
@@ -73,8 +75,7 @@ upper layers need to take care of this.
 
 \section{DTN}
 \label{introdtn}
-Delay-tolerant networking is the other core technology that is used within this
-thesis. The need for communication between nodes without continuous network
+The need for communication between nodes without continuous network
 connectivity is what DTN seeks to address. Most modern routing protocols only
 send out the payload once a complete route to the destination has been established.
 A communication over such an approach is only possible if source and destination

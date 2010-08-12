@@ -40,9 +40,9 @@ Over netlink it is possible to send different commands and a set attributes in t
 ieee802154 stack. The attributes contain among others information about the
 address of the interface, its index, PAN ID, channel and more. The commands
 allow to get and set the different attributes, trigger a association, request a
-scan and others. The given functionality is used to implement the basic
-utilities for configuration as well as a PAN coordinator bundled together in
-the lowpan-tools package. In IBR-DTN we only use a small subset of this
+scan and manipulate other network parameter. The given functionality is used to
+implement the basic utilities for configuration as well as a PAN coordinator
+bundled together in the lowpan-tools package. In IBR-DTN we only use a small subset of this
 functionality. We use the given interface name to ask for its short address when
 binding to the socket to receive incoming data. In the future we could also ask for
 the PAN ID and the hardware address to be more flexible.
