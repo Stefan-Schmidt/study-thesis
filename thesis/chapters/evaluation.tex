@@ -2,8 +2,18 @@
 To verify our work on the convergence layer as well as compare it to others and
 find potential bottlenecks we evaluated our work under different test cases.
 Comparing the data throughput and packet loss for raw IEEE 802.15.4 against DTN
-as an additional layer. Distance measurement as well as Round Trip Time
-measurement have also been done.
+as an additional layer was the first test case. This metric allows us to compare
+the throughput with other test systems using for example IEEE 802.11.
+Furthermore this test case allows us to measure the protocol overhead added by
+DTN on top of another connection. The second test case has been Round Trip Time
+measurement. It measured the time a packet needs to travel to the destination
+and back. Again we gathered a metric we can use to compare against other DTN
+test system we have and calculate the delay DTN added to a connection.
+
+All measurements have been repeated for different distances between the nodes.
+This way we gathered some implicit informations about the potential range of the
+wireless link. Not a real distance measurement but together with a quality
+indicator like packet loss and interesting by-product of our other test cases.
 
 \section{Throughput}
 For the real payload data throughput we measured the payload data the receiving
@@ -27,17 +37,26 @@ routine and the lookup went away. It was the smallest value we could still
 reliable send data with. Obviously such a big delay has a negative impact on the
 throughput, but without it no measurement would have been possible at all.
 
-Figure \ref{fig:throughput} shows the data we collected over different distances between the
-nodes. While the IEEE 802.15.4 throughput gradually decreases, the DTN throughput
-has some interesting amplitudes and trespasses. We tried to normalize this with
-more measurements but every now and then the DTN communication would hang
-for some seconds and then continue. It is not yet known which part of DTN added
-these delays. The new convergence layer would be the first part that needs to be
-investigated. Due to the new delay in the testing software the throughput is
+Figure \ref{fig:throughput} shows the data we collected over different distances
+between the nodes on the IEEE 802.15.4 layer. While the IEEE 802.15.4 throughput
+gradually decreases, the DTN throughput on the left chart of figure
+\ref{fig:throughput_dtn} has some interesting amplitudes and trespasses. They
+are related to a problem on the sending node. Every now and then the DTN
+communication between our test application and the local DTN daemon would hang
+for some seconds and then continue. The hang occurred locally without any bundle
+send over the network. Futher investigation showed that it must be a problem
+with usage of the local API the DTN daemon offers to applications.
+
+While not being able to find the culprit we run another test  cycle and filtered
+out all results where a bundle needs more then 5 seconds from the test
+application to the DTN daemon. This data is the base for the right graph. Like
+the IEEE 802.15.4 graph the throughput decreases over the distance.
+
+Due to the added delay in the testing software the throughput is
 not really impressive. The theoretical maximum for IEEE 802.15.4 on the 2.4 GHz
 band is about 250 kbps and in our tests we only reached a maximum throughput of
-4600 bps. Channel 11 was used on the 2.4 GHz band which is the only band our
-hardware supports.
+4600 bps which equals 1.8 percent of the theoretical maximum. Channel 11 was used
+on the 2.4 GHz band which is the only band our hardware supports.
 
 \begin{figure}
   \begin{center}
@@ -52,7 +71,7 @@ hardware supports.
     \includegraphics[width=6.5cm]{images/throughput_dtn}
     \includegraphics[width=6.5cm]{images/throughput_dtn2}
     \caption{Data throughput for DTN}
-    \label{fig:throughput}
+    \label{fig:throughput_dtn}
   \end{center}
 \end{figure}
 
