@@ -1,7 +1,7 @@
 \chapter{OpenEmbedded}
 \label{annexoe}
 
-OpenEmbedded \footnote{http://www.openembedded.org/} is a build framwork for
+OpenEmbedded \footnote{http://www.openembedded.org/} is a build framework for
 embedded Linux. It provides the meta-data which incorporates the knowledge how
 to fetch, build, install, package and more for over 5000 Open Source projects.
 
@@ -28,12 +28,12 @@ MACHINE_FEATURES = "kernel26 usbgadget alsa iwmmxt"
 
 We also added the needed meta-data for the Linux kernel used on our Imote2 and
 the build description for IBR-DTN. In a final step we put all this together in
-an image that could be build with the \emph{bitbake} application. Bitbake uses
+an image that could be build with the \emph{bitbake} application. BitBake uses
 the meta-data provided by OpenEmbedded to actually build the software and the
 resulting firmware and kernel images.
 
 After this we were able to create our complete firmware image by just executing
-bitbake like this:
+BitBake like this:
 
 \begin{verbatim}
 bitbake imote2-image
