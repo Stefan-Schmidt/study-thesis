@@ -1,5 +1,4 @@
 \chapter{Conclusion}
-
 This thesis showed that it is possible to use a standard compliant DTN
 implementation on top of a IEEE 802.15.4 network. That was not obvious from the
 beginning and can be seen as a success. We found and corrected problems in the
@@ -7,12 +6,16 @@ driver and Linux kernel stack for IEEE 802.15.4 and wrote a convergence layer to
 adapt IBR-DTN to it. The evaluation was used for performance measurement and
 showed us the actual performance as well as areas for improvements.
 
-Basing our convergence layer on top of the upcoming Linux stack instead of
-inventing our own userspace interface allows us to share the maintenance as well
-as future development and optimizations with other interested parties. This
-gives us a good base for new research projects work around Linux, IBR-DTN and
-IEEE 802.15.4.
+Being the first project implementing standard compliant DTN over a IEEE 802.15.4
+link allowed us to proof that both technologies can work together. This opens up
+a complete new field of research. Using delay tolerant networking in low-power
+wireless sensor networks allows multi-hop transmission of sensor data following
+the store and forward principle of DTN. Nodes must no longer be in range to
+transmit data but can send it out to all other nodes in range which will forward
+the data until they reach the destination. The win is a greater flexibility for
+sensor node placement and moving sensors.
 
+\section{Future Work}
 The new convergence layer supports sending and receiving for bundles up to a
 payload of 40 bytes. That is the biggest limitation of the current work. To
 improve this situation different approaches can be taken. One of the newest
@@ -27,8 +30,6 @@ receiving side. Such a mechanism is already described in the TCP convergence
 layer draft \cite{tcp-clayer-draft} and implemented in IBR-DTN. In the future
 work this could be adapted to the IEEE 802.15.4 convergence layer to fully
 solve the problem of the restricted payload length.
-
-\section{Future Work}
 
 The evaluation also revealed some initial performance statistics which can be
 used to improve the current implementation. One of the most interesting points
