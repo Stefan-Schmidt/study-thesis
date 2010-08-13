@@ -20,9 +20,13 @@ as in case of UDP or have to be re-transmitted. This re-transmission could be
 problematic if the network connection is unavailable more often then available.
 For such scenarios delay tolerant networking was designed to send the
 packets, perhaps over several hops, to the destination without needing to
-establish a channel between source and destination. In~\ref{introdtn} we give a
-short introduction to DTN before describing the IBR-DTN implementation in chapter
-\ref{ibr-dtn} and our convergence layer in chapter \ref{802154layer}.
+establish a channel between source and destination. Especially the latter is
+also an important point for wireless sensor networks (WSN). Such WSNs typically
+have fragile links to each other and may be moving. In such a scenario DTN
+allows communication even if some links are down or no direct connection is
+possible. In~\ref{introdtn} we give a short introduction to DTN before describing
+the IBR-DTN implementation in chapter \ref{ibr-dtn} and our convergence layer in
+chapter \ref{802154layer}.
 
 \section{IEEE 802.15.4}
 \label{intro802154}
@@ -45,6 +49,14 @@ of different other specifications as shown in figure~\ref{fig:802154layer}. The
 most widely know is be ZigBee. With 6LowPAN there is also work underway to combine
 LR-WPAN with standard internet protocols like IPv6.
 
+\begin{figure}
+  \begin{center}
+    \includegraphics[height=6cm]{images/802154layer}
+    \caption{IEEE 802.15.4 lower layers with optional upper layers}
+        \label{fig:802154layer}
+  \end{center}
+\end{figure}
+
 Specified for an infrastructure-less network the topologies may be star or
 Peer-to-Peer based as well a combination of both. Figure \ref{fig:802154topologies}
 shows examples for these topologies. Two different device types are allowed:
@@ -59,14 +71,6 @@ and only unique withing the PAN. Additionally every node has a long address with
 64 bit unique worldwide. One thing to keep in mind is that routing is not
 covered by the standard. To relay messages over multiple hops the supplementing
 upper layers need to take care of this.
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[height=6cm]{images/802154layer}
-    \caption{IEEE 802.15.4 lower layers with optional upper layers}
-        \label{fig:802154layer}
-  \end{center}
-\end{figure}
 
 \begin{figure}
   \begin{center}
@@ -92,6 +96,15 @@ of a successful delivered message would be to send out multiple copies of the
 same message, maybe to different hops. Such an approach obviously increases the
 network and storage load and may not be useful for constrained devices like
 sensor nodes.
+
+The main area of DTN research is deep-space networking. Funded by NASA and other
+organizations DTN was used on spacecrafts to allow delay tolerant communication.
+Besides spacecraft there is research on interplanetary internet with DTN.
+Although the link between planets transmits the data with the speed the delay
+and potential disruptions is nothing nowadays networking protocols can cope
+with. The problem of delays in the transmission is not bound to interplanetary
+communication. Delay and disruptions is something that happens in wireless
+sensor networks as well which motivates the research on DTN for such networks.
 
 The bundle protocol specifies an overlay network which interacts with the lower
 layers over convergence layers. The lower layers are not bound to be IP
