@@ -65,7 +65,9 @@ simple device which can only connect to one FFD at a time. Therefore it can only
 act as a leaf in all described topologies. In contrast, the FFD is able to act
 as a coordinator. The role of the coordinator is to provide a synchronization
 service by sending out beacons. This way it creates a personal area network
-(PAN) on a specified channel. Within the network the coordinator assigns
+(PAN) on a specified channel. This network is addressed with a 16 bit PAN ID
+which can be seen as a network name a associating node needs to specify when
+joining the network. Within the network the coordinator assigns
 addresses to associating nodes and can relay messages between nodes. The
 assigned addresses are short addresses with only 16 bit and only unique within
 the PAN. Additionally every node has a long address with 64 bit unique worldwide.
