@@ -13,18 +13,18 @@ small, power constraint devices. We will use it in our research and have some
 more information about it prepared in section~\ref{intro802154}.
 
 The second problem are network connection disruptions - be it due to movement or
-the other changes. The most widely used protocol family with IP, UDP, TCP is not
+other changes. The most widely used protocol family with IP, UDP, TCP is not
 designed to cope with disrupted networks. They need an established physical connection
 to work as expected. If this is not the case the packets may be just lost
 as in case of UDP or have to be re-transmitted. This re-transmission could be
 problematic if the network connection is unavailable more often then available.
-For such scenarios delay tolerant networking was designed to send the
+For such scenarios delay tolerant networking (DTN) was designed to send the
 packets, perhaps over several hops, to the destination without needing to
 establish a channel between source and destination. Especially the latter is
 also an important point for wireless sensor networks (WSN). Such WSNs typically
 have fragile links to each other and may be moving. In such a scenario DTN
 allows communication even if some links are down or no direct connection is
-possible. In~\ref{introdtn} we give a short introduction to DTN before describing
+possible. In section~\ref{introdtn} we give a short introduction to DTN before describing
 the IBR-DTN implementation in chapter~\ref{ibr-dtn} and our convergence layer in
 chapter~\ref{802154layer}.
 
@@ -93,7 +93,8 @@ are connected to a network long enough to establish a route between them,
 transfer the data and possibly acknowledge the transfer.
 
 DTN in contrast uses a store and forward approach which sends out the data
-together with the destination address. The bundle protocol in ~\cite{RFC5050} was specified for this. One approach to maximize the probability
+together with the destination address. The bundle protocol in ~\cite{RFC5050} was
+specified for this. One approach to maximize the probability
 of a successful delivered message would be to send out multiple copies of the
 same message, maybe to different hops. Such an approach obviously increases the
 network and storage load and may not be useful for constrained devices like
@@ -102,8 +103,8 @@ sensor nodes.
 The main area of DTN research is deep-space networking. Funded by NASA and other
 organizations DTN was used on spacecrafts to allow delay tolerant communication.
 Besides spacecraft there is research on interplanetary internet with DTN.
-Although the link between planets transmits the data with the speed the delay
-and potential disruptions is nothing nowadays networking protocols can cope
+Although the link between planets transmits the data with the speed of light the delay
+and potential disruptions are nothing nowadays networking protocols can cope
 with. The problem of delays in the transmission is not bound to interplanetary
 communication. Delay and disruptions is something that happens in wireless
 sensor networks as well which motivates the research on DTN for such networks.

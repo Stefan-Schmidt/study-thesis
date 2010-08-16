@@ -1,6 +1,6 @@
 \chapter{Imote2 Hardware}
-For this thesis the Imote2~\cite{imote2} hardware platform was used as it allowed us to use
-standard Linux environment while acting like a wireless sensor network node to
+For this thesis the Imote2~\cite{imote2} hardware platform was used as it allowed
+us to use a standard Linux environment while acting like a wireless sensor network node to
 the outside. The Imote2 platform
 consists of different pluggable boards to extend it with sensors or multimedia
 capabilities. For our work we only used the Imote2 Processor Radio Board
@@ -31,18 +31,17 @@ interfaces, I2C, SPI and GPIOs. USB client is already routed to a mini USB
 connector on the board. This can be used to access the system and supply power
 over USB.
 
-Figure~\ref{fig:imote2top} is a top view of the IPR2400 showing the USB client plug,
-the board connectors and the IEEE 802.15.4 radio transceiver with the onboard
-antenna. We go into more details about it in section~\ref{cc2420}.
+Figure~\ref{fig:imote2top} is a top and bottom view of the IPR2400 showing the
+antenna (1), the CC2420 (2), the board connectors (3) and the USB connector (4)
+on the left side and the bottom side with the PXA processor (5) and power
+management chip (6) on the right. We go into more details about it in
+section~\ref{cc2420}.
 
 \begin{figure}
   \begin{center}
     \includegraphics[width=6.5cm]{images/imote_top_cutted2}
     \includegraphics[width=6.5cm]{images/imote_bottom_cutted2}
-    \caption{Top side of the Processor Radio Board with antenna (1), the CC2420 (2),
-	     the board connectors (3) and the USB connector (4) on the left side
-	     and the bottom side with the PXA processor (5) and power management
-	     chip (6) on the right}
+    \caption{Top and bottom view of the Processor Radio Board}
         \label{fig:imote2top}
   \end{center}
 \end{figure}
@@ -69,7 +68,7 @@ complexity to drive the chip.
 
 Additional hardware support is available for CRC calculation, data encryption, clear
 channel assignment, auto acknowledge, link quality indication and more. Due to
-his extensive hardware support this chip is also used in many microcontroller
+its extensive hardware support this chip is also used in many microcontroller
 based systems. It is easy to integrate the SPI interface as well as the GPIO and
 interrupt lines into a system and the software support to drive the chip can be
 stripped down to a minimum if needed.
