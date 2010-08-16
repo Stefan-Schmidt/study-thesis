@@ -59,7 +59,10 @@ coordinator or normal node. It uses only the 2.4 GHz band out of the three
 available and supports all sixteen channels on this band (channel 11 / 2.405 GHz
 to channel 26 / 2.480 GHz). It also supports the highest data rate available
 in IEEE 802.15.4 with 250 kbps. Configuration modes for the radio transmission power
-are available to either save power or extend range.
+are available to either save power or extend range. The CC2420 falls in the
+category of packet-based radio. Packet-based radios are implementing parts of
+the physical layer already in hardware. This brings the benefit of less software
+complexity to drive the chip.
 
 Additional hardware support is available for CRC calculation, data encryption, clear
 channel assignment, auto acknowledge, link quality indication and more. Due to
