@@ -36,7 +36,7 @@ media access control layer for so called low-rate wireless personal area network
 infrastructure over small distances. The offered transfer rate can be up to 250 kbps.
 The standard specifies three possible frequency bands to operate in. 16 channels
 in the 2450 MHz band, 10 channels in the 915 MHz band and one channel in the 868
-MHz band. The usage of some may be restricted in different countries but 2450 MHz
+MHz band. The usage of some may be restricted in different countries but the 2450 MHz
 band is available worldwide.
 Other features of IEEE 802.15.4 includes collision avoidance through CSMA/CA, built
 in support for secure communication through cryptography, power management through
@@ -46,7 +46,7 @@ retransmissions and reserved time slots for real-time operations.
 The standard only covers the two lowest layer of the protocol stack. Supplementing
 it to a fully functional networking stack is the aim of different other
 specifications as shown in figure~\ref{fig:802154layer}. The best known of these
-protocols is ZigBee. With 6LowPAN there is also work underway to combine
+specifications is ZigBee. With 6LowPAN there is also work underway to combine
 LR-WPAN with standard internet protocols like IPv6.
 
 \begin{figure}
@@ -58,19 +58,20 @@ LR-WPAN with standard internet protocols like IPv6.
 \end{figure}
 
 Specified for an infrastructure-less network the topologies may be star or
-Peer-to-Peer based as well a combination of both. Figure~\ref{fig:802154topologies}
+Peer-to-Peer based as well as a combination of both. Figure~\ref{fig:802154topologies}
 shows examples for these topologies. Two different device types are allowed:
-full-function device (FFD) and
-reduced-function device (RFD). The RFD is a very simple device which can only
-connect to one FFD at a time. Therefore it can only act as a leaf in all
-described topologies. In contrast, the FFD is able to act as a coordinator to
-create a new PAN and relay messages to other nodes. At least one coordinator
-is needed in every network. It creates the network and assigns addresses to
-associating nodes. These assigned addresses are short addresses with only 16 bit
-and only unique withing the PAN. Additionally every node has a long address with
-64 bit unique worldwide. One thing to keep in mind is that routing is not
-covered by the standard. To relay messages over multiple hops the supplementing
-upper layers need to take care of this.
+full-function device (FFD) and reduced-function device (RFD). The RFD is a very
+simple device which can only connect to one FFD at a time. Therefore it can only
+act as a leaf in all described topologies. In contrast, the FFD is able to act
+as a coordinator. The role of the coordinator is to provide a synchronization
+service by sending out beacons. This way it creates a personal area network
+(PAN) on a specified channel. Within the network the coordinator assigns
+addresses to associating nodes and can relay messages between nodes. The
+assigned addresses are short addresses with only 16 bit and only unique within
+the PAN. Additionally every node has a long address with 64 bit unique worldwide.
+One thing to keep in mind is that routing is not covered by the standard. To
+relay messages over multiple hops the supplementing upper layers need to take
+care of this.
 
 \begin{figure}
   \begin{center}
