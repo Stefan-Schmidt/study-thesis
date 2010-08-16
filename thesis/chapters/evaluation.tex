@@ -115,6 +115,31 @@ packet loss as quality indicator. All distances which showed a packet loss above
 50 percent are rated as unusable. During our measurements the packet loss
 increased over the distance with 43 percent at 30m, as can be seen in table~\ref{tableloss}, and trespassed the 50 percent boarder from 33m upwards.
 
+\begin{table}
+\begin{tabular}{lllllllll}
+    & 0m & 1m & 5m & 10m & 15m & 20m & 25m & 30m \\
+\hline
+Min & 656.14 & 651.11 & 664.25 & 645.27 & 659.29 & 651.40 & 653.66 & 677.29 \\
+Mean & 676.17 & 662.38 & 674.85 & 674.85 & 676.46 & 672.03 & 672.47 & 686.60 \\
+Max & 693.14 & 678.49 & 684.96 & 685.11 & 695.76 & 684.22 & 687.26 & 693.64 \\
+\end{tabular}
+\caption{DTN Round Trip Time measurement results over IEEE 802.15.4}
+\label{dtnrtt}
+\end{table}
+
+\begin{table}
+\begin{tabular}{lllllllll}
+    & 0m & 1m & 5m & 10m & 15m & 20m & 25m & 30m \\
+\hline
+Min & 442.41 & 437.44 & 440.15 & 437.58 & 436.88 & 437.76 & 438.57 & 437.82 \\
+Mean & 442.53 & 438.29 & 441.36 & 437.65 & 437.68 & 438.54 & 441.46 & 440.94 \\
+Max & 442.84 & 438.46 & 443.49 & 441.25 & 442.19 & 441.46 & 441.47 & 441.69 \\
+\end{tabular}
+\caption{IEEE 802.15.4 Round Trip Time measurement results}
+\label{802154rtt}
+\end{table}
+machine.
+
 \section{DTN Round Trip Time}
 The last test case was the round trip time of a DTN bundle. We used the
 \emph{dtnping} utility to send out a bundle, receive the answer and calculate
@@ -145,31 +170,6 @@ More interesting is the difference between the round trip time on a IEEE
 added by IEEE 802.15.4 is noticeable. Comparing the value against a
 IEEE 802.11 based wireless system could get some insight if this latency is based
 on wireless vs. wired or actually on the IEEE 802.15.4 protocol.
-
-\begin{table}
-\begin{tabular}{lllllllll}
-    & 0m & 1m & 5m & 10m & 15m & 20m & 25m & 30m \\
-\hline
-Min & 656.14 & 651.11 & 664.25 & 645.27 & 659.29 & 651.40 & 653.66 & 677.29 \\
-Mean & 676.17 & 662.38 & 674.85 & 674.85 & 676.46 & 672.03 & 672.47 & 686.60 \\
-Max & 693.14 & 678.49 & 684.96 & 685.11 & 695.76 & 684.22 & 687.26 & 693.64 \\
-\end{tabular}
-\caption{DTN Round Trip Time measurement results over IEEE 802.15.4}
-\label{dtnrtt}
-\end{table}
-
-\begin{table}
-\begin{tabular}{lllllllll}
-    & 0m & 1m & 5m & 10m & 15m & 20m & 25m & 30m \\
-\hline
-Min & 442.41 & 437.44 & 440.15 & 437.58 & 436.88 & 437.76 & 438.57 & 437.82 \\
-Mean & 442.53 & 438.29 & 441.36 & 437.65 & 437.68 & 438.54 & 441.46 & 440.94 \\
-Max & 442.84 & 438.46 & 443.49 & 441.25 & 442.19 & 441.46 & 441.47 & 441.69 \\
-\end{tabular}
-\caption{IEEE 802.15.4 Round Trip Time measurement results}
-\label{802154rtt}
-\end{table}
-machine.
 
 \begin{table}
 \begin{tabular}{lll}
