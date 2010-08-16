@@ -13,7 +13,7 @@ test system we have and calculate the delay DTN added to a connection.
 All measurements have been repeated for different distances between the nodes.
 This way we gathered some implicit informations about the potential range of the
 wireless link. Not a real distance measurement but together with a quality
-indicator like packet loss and interesting by-product of our other test cases.
+indicator like packet loss an interesting by-product of our other test cases.
 
 \section{Throughput}
 For the real payload data throughput we measured the payload data the receiving
@@ -133,16 +133,15 @@ our usual test environment as can be seen in table \ref{dtnrtt2}. The
 local scenario did send bundles over the UDP convergence layer on the loopback
 interface of our x86 workstation while the UDP scenario did send the bundles
 through the UDP convergence layer over an 1 Gbit Ethernet link to another
-machine.
 
 The mean round trip time value does not change much from 0m up to 30m. Actually
-the values are so near to each other that they can not be rated relevant. That
+the values are so close to each other that they can not be rated relevant. That
 is of course no real surprise when the maximum distance is as short as 30m. A
 delay for the over the air traveling will not be significant on such a distance.
 
 More interesting is the difference between the round trip time on a IEEE
 802.15.4 network in contrast to 1 Gbit Ethernet. With a factor of 16 the latency
-added by IEEE 802.15.4 is really noticeable. Comparing the value against a
+added by IEEE 802.15.4 is noticeable. Comparing the value against a
 IEEE 802.11 based wireless system could get some insight if this latency is based
 on wireless vs. wired or actually on the IEEE 802.15.4 protocol.
 
@@ -169,6 +168,7 @@ Max & 442.84 & 438.46 & 443.49 & 441.25 & 442.19 & 441.46 & 441.47 & 441.69 \\
 \caption{IEEE 802.15.4 Round Trip Time measurement results}
 \label{802154rtt}
 \end{table}
+machine.
 
 \begin{table}
 \begin{tabular}{lll}
