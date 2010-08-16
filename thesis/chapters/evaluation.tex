@@ -35,15 +35,18 @@ to go to the ground of this problem and fix it properly so we used a delay
 in the test application to circumvent this. We added a 100ms delay in the send
 routine and the lookup went away. It was the smallest value we could still
 reliable send data with. Obviously such a big delay has a negative impact on the
-throughput, but without it no measurement would have been possible at all.
+throughput, but without it no measurement would have been possible at all. Each
+measurement was done five times and the values as shown in the graphs are the
+arithmetic means of these five values.
 
 Figure~\ref{fig:throughput} shows the data we collected over different distances
 between the nodes on the IEEE 802.15.4 layer. While the IEEE 802.15.4 throughput
-gradually decreases, the DTN throughput on the left chart of figure~\ref{fig:throughput_dtn} has some interesting amplitudes and trespasses. They
+gradually decreases, the DTN throughput on the left chart of figure~\ref{fig:throughput_dtn}
+has some interesting amplitudes and trespasses. They
 are related to a problem on the sending node. Every now and then the DTN
 communication between our test application and the local DTN daemon would hang
 for some seconds and then continue. The hang occurred locally without any bundle
-send over the network. Futher investigation showed that it must be a problem
+send over the network. Further investigation showed that it must be a problem
 with usage of the local API the DTN daemon offers to applications.
 
 While not being able to find the culprit we run another test  cycle and filtered
