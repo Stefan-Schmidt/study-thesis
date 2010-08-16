@@ -30,11 +30,28 @@ also an implementation of epidemic routing with bloomfilter.
 
 Once a new node is discovered the bundles stored for it are forwarded immediately.
 Some small applications that allow comfortable testing and debugging are also
-included in the suite: Dtnping for round trip time measurement as well as simple bundle
-send and receive tools.
+included in the suite: Dtnping for round trip time measurement as well as simple
+bundle send and receive tools.
+
+\section{DTN Convergence Layer}
+The role of a convergence layer in DTN is to encapsulate the details of the
+transport protocol from the rest of the bundle protocol. If the DTN core is in
+need to send out a bundle it uses the \emph{queue} method of the convergence
+layer to pass the bundle data and destination node informations to the
+convergence layer.
+
+All details about the bundle transmission are handled within the convergence
+layer and its helper functions. How complex the convergence layer needs to be
+depends on the transport protocol it implements. In general it can be split into
+three parts: establishing a connection, transfer the data and closing a
+connection.
+
+The receiving path the convergence layer listens for incoming data and up on
+complete receive sends the bundle into the DTN core for further processing. All
+details about possible packet reassembling or fragmentation are again hidden
+from the DTN core by the convergence layer.
 
 \section{Other DTN Implementations}
-
 As briefly mentioned above there are other implementations of the bundle
 protocol available. ION~\footnote{https://ion.ocp.ohiou.edu/} is, like IBR-DTN,
 a Linux/Unix implementation. DASM~\cite{dasm} is an implementation for Symbian.
