@@ -36,8 +36,8 @@ telnet localhost 4444
 First we need to make sure that the Imote2 is halted. In this state we are at PC
 0 and no code got executed so far. Afterwards we disable the flash protection and
 erase the complete flash. The last three steps are writing the bootloader, the
-Linux kernel and the rootfs at the given offsets into the flash. The last step
-will take a long time as it writes 30 Mbyte into the flash.
+Linux kernel and the root filesystem at the given offsets into the flash. The last
+step will take a long time as it writes 30 Mbyte into the flash.
 
 \begin{verbatim}
 # reset halt
