@@ -17,7 +17,9 @@ As domain AF\_IEEE802154 is used and a struct sockaddr\_ieee802154 fulfills the
 need for an adjustment of the addressing scheme as well as the usage of a PAN
 ID. The type is the well-known SOCK\_DGRAM and the default protocol is used. In the
 convergence layer we use the socket interface to transmit the data to the actual
-peer. The functionality is wrapped into a UnicastSocketLOWPAN class.
+peer. The functionality is wrapped into a UnicastSocketLOWPAN class. It
+encapsulates the binding to and provides the binded socket to the convergence
+layer.
 
 \begin{lstlisting}[caption= ieee802154 socket interface, label=lstsocketapi]
         int sd;
@@ -35,6 +37,16 @@ peer. The functionality is wrapped into a UnicastSocketLOWPAN class.
         a.addr.short_addr = 0x8001;
 	connect(sd, (struct sockaddr *)&a, sizeof(a));
 \end{lstlisting}
+
+To send out bundles coming from the IBR-DTN core the convergence layer implements
+the \emph{queue} method. This method has two parameters: a node object and a job
+object. The node object describes the destination node of the bundle. It
+contains informations about the address and in our case also about the PAN ID.
+This information is used to setup the correct address for sending. The bundle
+itself can be found in the job object. The bundle gets serialized and send of
+to the destination node. The receive path is simpler because no addressing
+is involved. Once a packet is complete received it gets de-serialized and send
+into the IBR-DTN core.
 
 Over netlink it is possible to send different commands and a set attributes in the
 ieee802154 stack. The attributes contain among others information about the
