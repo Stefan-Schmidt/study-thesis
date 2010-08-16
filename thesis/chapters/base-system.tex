@@ -2,18 +2,16 @@
 This chapter describes the basic software system we are using on the Imote2
 platform. Ranging from the bootloader through the Linux kernel up to the
 userland software stack. Our DTN implementation, IBR-DTN, is excluded here as we
-describe them in detail in chapters \ref{ibr-dtn} and \ref{802154layer}.
+describe them in detail in chapters~\ref{ibr-dtn} and~\ref{802154layer}.
 
 \section{Bootstrapping}
 The Imote2 comes with TinyOS pre-installed. No bootloader or similar mechanism
 is installed to allow reflashing of the device. As a last resort there is JTAG
-available on the interface board which we used  with OpenOCD
-\footnote{http://openocd.berlios.de/} and a
-JTAGKeyTiny adapter to bootstrap our Linux system. Blob
-\footnote{http://www.lartmaker.nl/lartware/blob/} was used as bootloader to
+available on the interface board which we used  with OpenOCD~\footnote{http://openocd.berlios.de/} and a
+JTAGKeyTiny adapter to bootstrap our Linux system. Blob~\footnote{http://www.lartmaker.nl/lartware/blob/} was used as bootloader to
 load the kernel image from flash and set the right parameters to boot into the
 userland root file system. Detailed steps how the image can be flashed into the
-device via JTAG can be found in appendix \ref{annexopenocd}.
+device via JTAG can be found in appendix~\ref{annexopenocd}.
 
 \section{Linux Kernel}
 A recent Linux kernel (2.6.33) is used on the device. The basic support for the
@@ -29,7 +27,7 @@ Like the IEEE 802.15.4 protocol the Linux stack is divided into two layers. The
 physical layer which is called ieee802154 and the mac layer which is called
 mac802154. While the former is already merged into the mainline kernel the latter
 is still being developed and lives inside the kernel repository of the
-linux-zigbee \footnote{http://sourceforge.net/apps/trac/linux-zigbee/} project.
+linux-zigbee~\footnote{http://sourceforge.net/apps/trac/linux-zigbee/} project.
 This repository follows the mainline kernel very closely and we based our work
 on it to submit fixes and enhancements directly to the driver maintainer.
 
@@ -97,4 +95,4 @@ We have chosen OpenEmbedded as the build system here to provide us with a workin
 kernel image and matching root filesystem we could flash onto the device. In the
 development phase OpenEmbedded was also used to cross compile the code for the
 target architecture. Some more information about OpenEmbedded and our use on the
-Imote2 could be found in appendix \ref{annexoe}.
+Imote2 could be found in appendix~\ref{annexoe}.

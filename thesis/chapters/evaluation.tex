@@ -37,10 +37,9 @@ routine and the lookup went away. It was the smallest value we could still
 reliable send data with. Obviously such a big delay has a negative impact on the
 throughput, but without it no measurement would have been possible at all.
 
-Figure \ref{fig:throughput} shows the data we collected over different distances
+Figure~\ref{fig:throughput} shows the data we collected over different distances
 between the nodes on the IEEE 802.15.4 layer. While the IEEE 802.15.4 throughput
-gradually decreases, the DTN throughput on the left chart of figure
-\ref{fig:throughput_dtn} has some interesting amplitudes and trespasses. They
+gradually decreases, the DTN throughput on the left chart of figure~\ref{fig:throughput_dtn} has some interesting amplitudes and trespasses. They
 are related to a problem on the sending node. Every now and then the DTN
 communication between our test application and the local DTN daemon would hang
 for some seconds and then continue. The hang occurred locally without any bundle
@@ -83,7 +82,7 @@ and was used to calculate the packet loss rate. No retransmission
 was done on the lower layers to avoid even more negative impact on the
 throughput and wrong statistics in this test.
 
-Table \ref{tableloss} shows the constant raise of the lost packet rate over the
+Table~\ref{tableloss} shows the constant raise of the lost packet rate over the
 distance we did our measurements. On a first look it looked suspicious that the
 packet loss for DTN was lower then for IEEE 802.15.4 although DTN was used on top
 of IEEE 802.15.4. It can be explained though when keeping in mind that less
@@ -111,8 +110,7 @@ whole board, could cover we combined our measurements with a distance
 measurement. To decide if a distance is still usable enough we used the
 packet loss as quality indicator. All distances which showed a packet loss above
 50 percent are rated as unusable. During our measurements the packet loss
-increased over the distance with 43 percent at 30m, as can be seen in table
-\ref{tableloss}, and trespassed the 50 percent boarder from 33m upwards.
+increased over the distance with 43 percent at 30m, as can be seen in table~\ref{tableloss}, and trespassed the 50 percent boarder from 33m upwards.
 
 \section{DTN Round Trip Time}
 The last test case was the round trip time of a DTN bundle. We used the
@@ -121,15 +119,15 @@ the round trip time. Bundles are sent to the \emph{echo} application of the
 receiving node. In our case this is directly the DTN daemon. The default payload
 size of a ping bundle was too big for our limited payload size on the IEEE
 802.15.4 convergence layer. We reduced the payload to 1 byte and used it for all
-tests. Table \ref{dtnrtt} shows the results of the measurement in milliseconds. We
+tests. Table~\ref{dtnrtt} shows the results of the measurement in milliseconds. We
 had 10 different scenarios for this test case and did five measurements for each.
 The first eight are the same we used for our throughput and packet loss test cases.
-In table \ref{802154rtt} we can see the same measurements without DTN directly on
+In table~\ref{802154rtt} we can see the same measurements without DTN directly on
 the IEEE 802.15.4 layer. By comparing these two measurements we can see that DTN
 adds a latency around 220ms. More surprising was that IEEE 802.15.4 already had
 a latency of about 440ms itself. Even when subtracting the 100ms delay we added
 it is still more then expected. We added two more scenarios to compare it against
-our usual test environment as can be seen in table \ref{dtnrtt2}. The
+our usual test environment as can be seen in table~\ref{dtnrtt2}. The
 local scenario did send bundles over the UDP convergence layer on the loopback
 interface of our x86 workstation while the UDP scenario did send the bundles
 through the UDP convergence layer over an 1 Gbit Ethernet link to another

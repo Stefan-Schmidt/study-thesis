@@ -5,10 +5,10 @@ around the clock two problems become more important. One problem is the power
 consumption of devices which make the ubiquity possible. In contrast to other
 computing devices we want them to be well hidden and unintrusive. Changing
 batteries or having power cables around is not a real option for them. On the
-other hand wireless communication protocols with IEEE 802.11 \cite{ieee80211} as the
+other hand wireless communication protocols with IEEE 802.11~\cite{ieee80211} as the
 leading option are a good choice for mobile devices like notebooks or
 smartphones but are still to power hungry for small ubiquitous devices.
-With IEEE 802.15.4 \cite{ieee802154} a new protocol was designed for exactly such
+With IEEE 802.15.4~\cite{ieee802154} a new protocol was designed for exactly such
 small, power constraint devices. We will use it in our research and have some
 more information about it prepared in section~\ref{intro802154}.
 
@@ -25,8 +25,8 @@ also an important point for wireless sensor networks (WSN). Such WSNs typically
 have fragile links to each other and may be moving. In such a scenario DTN
 allows communication even if some links are down or no direct connection is
 possible. In~\ref{introdtn} we give a short introduction to DTN before describing
-the IBR-DTN implementation in chapter \ref{ibr-dtn} and our convergence layer in
-chapter \ref{802154layer}.
+the IBR-DTN implementation in chapter~\ref{ibr-dtn} and our convergence layer in
+chapter~\ref{802154layer}.
 
 \section{IEEE 802.15.4}
 \label{intro802154}
@@ -58,7 +58,7 @@ LR-WPAN with standard internet protocols like IPv6.
 \end{figure}
 
 Specified for an infrastructure-less network the topologies may be star or
-Peer-to-Peer based as well a combination of both. Figure \ref{fig:802154topologies}
+Peer-to-Peer based as well a combination of both. Figure~\ref{fig:802154topologies}
 shows examples for these topologies. Two different device types are allowed:
 full-function device (FFD) and
 reduced-function device (RFD). The RFD is a very simple device which can only
@@ -90,8 +90,7 @@ are connected to a network long enough to establish a route between them,
 transfer the data and possibly acknowledge the transfer.
 
 DTN in contrast uses a store and forward approach which sends out the data
-together with the destination address. The bundle protocol in
-\cite{RFC5050} was specified for this. One approach to maximize the probability
+together with the destination address. The bundle protocol in ~\cite{RFC5050} was specified for this. One approach to maximize the probability
 of a successful delivered message would be to send out multiple copies of the
 same message, maybe to different hops. Such an approach obviously increases the
 network and storage load and may not be useful for constrained devices like
@@ -122,15 +121,14 @@ complex and memory as well as bandwidth consuming. Both resources that are scare
 on sensor network platforms.
 
 Two projects are aiming to explore this area of research. One of them is the
-TinyOS based DTNLite \cite{dtnlite}. It is loosely based on the DTN overlay
+TinyOS based DTNLite~\cite{dtnlite}. It is loosely based on the DTN overlay
 architecture. To deliver custody transfer over the overlay they use techniques
 like asynchronous message delivery. The concept is targeted at data collection
 applications which need to reach a central station for the collection over the
 network. The applications must be written or re-written to be DTNLite aware.
 
-ContikiDTN \cite{contikidtn} is, like DTNLite, written for a special purpose
-embedded operating system (in this case Contiki
-\footnote{http://www.sics.se/contiki/}). While DTNLite only aims to work with
+ContikiDTN~\cite{contikidtn} is, like DTNLite, written for a special purpose
+embedded operating system (in this case Contiki~\footnote{http://www.sics.se/contiki/}). While DTNLite only aims to work with
 other DTNLite installations, ContikiDTN aims for full standard compliance.
 ContikiDTN is tied to only work with a TCP convergence layer. It was a design
 choice that no other convergence layer can be plugged in. This restriction is based in
@@ -142,7 +140,7 @@ are designed around a special purpose operating system while our aim was to work
 on the general purpose operating system Linux.
 
 Also related to our work, and DTN in general, is the concept of Mobile
-Ubiquitous LAN Extensions (MULEs) \cite{mule}. Designed for the use in sparse
+Ubiquitous LAN Extensions (MULEs)~\cite{mule}. Designed for the use in sparse
 sensor networks the concept tries to reduce the power consumptions of the sensor
 nodes and therefore extend its lifetime. The concept differentiates between
 three network elements: a sensor data collecting node, a MULES that collects the

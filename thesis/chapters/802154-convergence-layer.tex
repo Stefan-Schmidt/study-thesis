@@ -12,7 +12,7 @@ The communication between the IEEE 802.15.4 convergence layer of IBR-DTN and the
 Linux ieee802154 stack is done over two separate channels. One is used for
 signalling and configuration and is handled over the kernel netlink mechanism.
 The second is used for the actual data transport and is exposed as standard
-socket interface. Listing \ref{lstsocketapi} shows the usage of the socket interface.
+socket interface. Listing~\ref{lstsocketapi} shows the usage of the socket interface.
 As domain AF\_IEEE802154 is used and a struct sockaddr\_ieee802154 fulfills the
 need for an adjustment of the addressing scheme as well as the usage of a PAN
 ID. The type is the well-known SOCK\_DGRAM and the default protocol is used. In the
@@ -63,7 +63,7 @@ looking for a zigbee connection. Lowpan is just the internal name for the
 IEEE 802.15.4 convergence layer inside IBR-DTN. The PAN ID needs to be filled into the
 port configuration option. Filled in values need to be in decimal notation.
 
-Listing \ref{lstconfig} also shows the configuration for static routes to other
+Listing~\ref{lstconfig} also shows the configuration for static routes to other
 nodes.
 
 \begin{lstlisting}[caption= dtnd example configuration, label=lstconfig]
@@ -105,7 +105,7 @@ normally has a maximum transfer size of 1500 bytes.
 The header size of the bundle protocol is not fixed but variable depending on
 the transported data and enabled options. It is also possible that the header
 size is greater than the 115 bytes of payload we could offer with IEEE 802.15.4. The
-draft \cite{tcp-clayer-draft} for a TCP convergence layer protocol could help here as it
+draft~\cite{tcp-clayer-draft} for a TCP convergence layer protocol could help here as it
 defines data transmission divided into several segments. Even the bundle
 header could be split into several segments this way and reassembled on the
 receiving side.
